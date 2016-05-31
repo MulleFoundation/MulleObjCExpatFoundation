@@ -1,4 +1,4 @@
-gitolite.mulle-kybernetik.com:MulleObjCFoundation
+ssh://git@mulle-kybernetik.com:23/MulleObjCFoundation
 
 #
 # building expat is difficult, because it fails to build the man file
