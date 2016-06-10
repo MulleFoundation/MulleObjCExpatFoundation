@@ -54,7 +54,7 @@ static char   test_xml[] = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\
 int   main( int argc, const char * argv[])
 {
    NSData    *data;
-   NSError   *error;
+   NSString  *error;
    id        plist;
 
    error = nil;

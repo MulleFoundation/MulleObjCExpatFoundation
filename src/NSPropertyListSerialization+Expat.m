@@ -18,7 +18,6 @@
 // other libraries of MulleObjCFoundation
 
 // std-c and dependencies
-#include <alloca.h>
 #include <expat.h>
 #include <ctype.h>
 
@@ -389,7 +388,6 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
    XML_LChar        *error;
    char             *s;
    int              maxlength;
-   char             *buf;
    char             c_buf[ 6];
    
    line   = XML_GetCurrentLineNumber( parser);
@@ -422,9 +420,12 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
    if( column > 256 - 3)
       return;
    
-   buf = alloca( column + 5);
-   paint_arrow( buf, (int) column);
-   NSLog( @"%.*s", maxlength, buf);
+   {
+      char   buf[ column + 5];
+      
+      paint_arrow( buf, (int) column);
+      NSLog( @"%.*s", maxlength, buf);
+   }
 }
 
 
