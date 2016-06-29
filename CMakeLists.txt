@@ -57,6 +57,7 @@ mulle_aba
 mulle_allocator
 mulle_test_allocator
 ${END_ALL_LOAD}
+-lexpat
 )
 
 

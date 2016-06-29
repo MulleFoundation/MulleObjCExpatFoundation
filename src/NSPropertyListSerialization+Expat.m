@@ -349,6 +349,9 @@ static void    end_elem_handler( void *_self, const XML_Char *name)
    if( ! obj)
       MulleObjCThrowInvalidArgumentException( @"Plist unparsable at <%s %@>", name, text);
 
+   // if obj != text, it can be discarded
+   if( obj != text)
+      [text release];
    pushKeyObj( self, match, obj);
 }
 
