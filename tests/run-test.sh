@@ -9,6 +9,37 @@
 
 set -m
 
+if [ -z "${DEBUGGER}" ]
+then
+   DEBUGGER=lldb
+fi
+
+DEBUGGER="`which "${DEBUGGER}"`"
+
+if [ -z "${DEBUGGER_LIBRARY_PATH}" ]
+then
+   DEBUGGER_LIBRARY_PATH="`dirname "${DEBUGGER}"`/../lib"
+fi
+
+
+SOURCE_EXTENSION=".m"
+
+LIBRARY_SHORTNAME="ObjCExpatFoundation"
+SHLIB_PREFIX="lib"
+SHLIB_EXTENSION=".so"
+LDFLAGS="-lexpat"
+
+case `uname` in
+   Darwin)
+      SHLIB_EXTENSION=".dylib"
+      ;;
+
+   Linux)
+     LDFLAGS="${LDFLAGS} -ldl -lpthread"
+esac
+
+
+LIBRARY_FILENAME="${SHLIB_PREFIX}MulleStandalone${LIBRARY_SHORTNAME}${SHLIB_EXTENSION}"
 
 # check if running a single test or all
 DEFAULTCFLAGS="-w -O0 -g"
@@ -87,20 +118,6 @@ then
    CFLAGS="${DEFAULTCFLAGS}"
 fi
 
-#
-# convenient switch via cc between Apple and Mulle
-# for comparison tests
-#
-if [ -z "${CC}" ]
-then
-   MULLE_CLANG="`which mulle-clang`"
-   if [ -z "${MULLE_CLANG}" ]
-   then
-      echo "mulle-clang can not be found" >&2
-      exit 1
-   fi
-
-
 # find runtime and headers
 #
 # this is more or less an ugly hack, that should work
@@ -112,35 +129,35 @@ then
 #        ./mulle-clang-install/tests
 #        ./mulle-objc-runtime
 #
-   MULLE_OBJC_EXPAT_DEPENDENCIES_INCLUDE=/usr/local/bin
 
-   lib="`ls -1 ../lib/libMulleStandaloneObjCExpatFoundation.dylib 2> /dev/null | tail -1`"
-   MULLE_OBJC_EXPAT_DEPENDENCIES_INCLUDE="../include"
+lib="`ls -1 "../lib/${LIBRARY_FILENAME}" 2> /dev/null | tail -1`"
+DEPENDENCIES_INCLUDE="../include"
 
-   if [ ! -x "${lib}" ]
-   then
-      lib="`ls -1 "../build/Products/Debug/libMulleStandaloneObjCExpatFoundation.dylib" | tail -1 2> /dev/null`"
-      MULLE_OBJC_EXPAT_DEPENDENCIES_INCLUDE="../dependencies/include"
-   fi
-
-   MULLE_OBJC_EXPAT="${1:-${lib}}"
-   [ -z $# ] || shift
-
-   if [ -z "${MULLE_OBJC_EXPAT}" ]
-   then
-      echo "libMulleStandaloneObjCExpatFoundation.dylib can not be found" >&2
-      exit 1
-   fi
-
-   MULLE_OBJC_EXPAT_INCLUDE="`dirname "${MULLE_OBJC_EXPAT}"`"
-
-   if [ -d "${MULLE_OBJC_EXPAT_INCLUDE}/usr/local/include" ]
-   then
-      MULLE_OBJC_EXPAT_INCLUDE="${MULLE_OBJC_EXPAT_INCLUDE}/usr/local/include"
-   else
-      MULLE_OBJC_EXPAT_INCLUDE="${MULLE_OBJC_EXPAT_INCLUDE}/include"
-   fi
+if [ ! -f "${lib}" ]
+then
+   lib="`ls -1 "../build/Products/Debug/${LIBRARY_FILENAME}" | tail -1 2> /dev/null`"
+   DEPENDENCIES_INCLUDE="../dependencies/include"
 fi
+
+LIBRARY="${1:-${lib}}"
+[ -z $# ] || shift
+
+if [ -z "${LIBRARY}" ]
+then
+   echo "${LIBRARY_FILENAME} can not be found" >&2
+   exit 1
+fi
+
+LIBRARY_INCLUDE="`dirname "${LIBRARY}"`"
+
+if [ -d "${LIBRARY_INCLUDE}/usr/local/include" ]
+then
+   LIBRARY_INCLUDE="${LIBRARY_INCLUDE}/usr/local/include"
+else
+   LIBRARY_INCLUDE="${LIBRARY_INCLUDE}/include"
+fi
+
+
 
 DIR=${1:-`pwd`}
 shift
@@ -278,25 +295,24 @@ fail_test()
    a_out="$2"
    stdin="$3"
 
-   [ ! -z "${CC}" ] && exit 1
-
    echo "DEBUG: " >&2
    echo "rebuilding with -O0 and debug symbols..." >&2
    $MULLE_CLANG -O0 -g -o "${a_out}.debug" \
       -fobjc-runtime=mulle \
-      "-I${MULLE_OBJC_EXPAT_INCLUDE}" \
-      "-I${MULLE_OBJC_EXPAT_DEPENDENCIES_INCLUDE}" \
-      "${MULLE_OBJC_EXPAT}" \
+      "-I${LIBRARY_INCLUDE}" \
+      "-I${DEPENDENCIES_INCLUDE}" \
+      ${LDFLAGS} \
+      "${LIBRARY}" \
       "${m_source}" > "$errput" 2>&1
 
-   echo "MULLE_OBJC_EXPAT_AUTORELEASEPOOL_TRACE=15 \
-   MULLE_OBJC_EXPAT_TEST_ALLOCATOR=1 \
+   echo "MULLE_OBJC_AUTORELEASEPOOL_TRACE=15 \
+MULLE_OBJC_TEST_ALLOCATOR=1 \
 MULLE_TEST_ALLOCATOR_TRACE=2 \
 MallocStackLogging=1 \
 MALLOC_FILL_SPACE=1 \
 DYLD_INSERT_LIBRARIES=/usr/lib/libgmalloc.dylib \
 DYLD_FALLBACK_LIBRARY_PATH=\"${DYLD_FALLBACK_LIBRARY_PATH}\" \
-LD_LIBRARY_PATH=\"${LD_LIBRARY_PATH}\" lldb ${a_out}.debug" >&2
+LD_LIBRARY_PATH=\"${LD_LIBRARY_PATH}:${DEBUGGER_LIBRARY_PATH}\" ${DEBUGGER} ${a_out}.debug" >&2
    if [ "${stdin}" != "/dev/null" ]
    then
       echo "run < ${stdin}" >&2
@@ -328,7 +344,7 @@ run()
    local fail
    local match
 
-   random=`mktemp -t "MulleObjC"`
+   random=`mktemp -t "MulleObjCOSFoundation.XXXX"`
    output="$random.stdout"
    errput="$random.stderr"
    errors=`basename $m_source .m`.errors
@@ -359,13 +375,14 @@ run()
    then
       $MULLE_CLANG ${CFLAGS} -o "${a_out}" \
       -fobjc-runtime=mulle \
-      "-I${MULLE_OBJC_EXPAT_INCLUDE}" \
-      "-I${MULLE_OBJC_EXPAT_DEPENDENCIES_INCLUDE}" \
-      "${MULLE_OBJC_EXPAT}" \
+      "-I${LIBRARY_INCLUDE}" \
+      "-I${DEPENDENCIES_INCLUDE}" \
+      "${LIBRARY}" \
+      ${LDFLAGS} \
       "${m_source}" > "$errput" 2>&1
       rval=$?
    else
-      "${CC}" ${CFLAGS}  -o "${a_out}" -framework Foundation "${m_source}" > "$errput" 2>&1
+      "${CC}" ${CFLAGS} -o "${a_out}" ${LDFLAGS} -framework Foundation "${m_source}" > "$errput" 2>&1
       rval=$?
    fi
 
@@ -388,7 +405,7 @@ run()
       fi
    fi
 
-   MULLE_OBJC_EXPAT_TEST_ALLOCATOR=1 \
+   MULLE_OBJC_TEST_ALLOCATOR=1 \
 MallocStackLogging=1 \
 MallocScribble=1 \
 MallocPreScribble=1 \
@@ -595,18 +612,19 @@ test_binary()
 }
 
 
+LIBRARY="`absolute_path_if_relative "$LIBRARY"`"
+LIBRARY_INCLUDE="`absolute_path_if_relative "$LIBRARY_INCLUDE"`"
+DEPENDENCIES_INCLUDE="`absolute_path_if_relative "$DEPENDENCIES_INCLUDE"`"
+
+# OS X
+DYLD_FALLBACK_LIBRARY_PATH="`dirname "${LIBRARY}"`" ; export DYLD_FALLBACK_LIBRARY_PATH
+# Linux
+LD_LIBRARY_PATH="`dirname "${LIBRARY}"`" ; export LD_LIBRARY_PATH
+
+
 if [ -z "${CC}" ]
 then
-   MULLE_CLANG="`absolute_path_if_relative "$MULLE_CLANG"`"
-   MULLE_OBJC_EXPAT="`absolute_path_if_relative "$MULLE_OBJC_EXPAT"`"
-   MULLE_OBJC_EXPAT_INCLUDE="`absolute_path_if_relative "$MULLE_OBJC_EXPAT_INCLUDE"`"
-   MULLE_OBJC_EXPAT_DEPENDENCIES_INCLUDE="`absolute_path_if_relative "$MULLE_OBJC_EXPAT_DEPENDENCIES_INCLUDE"`"
-
-   # OS X
-   DYLD_FALLBACK_LIBRARY_PATH="`dirname "${MULLE_OBJC_EXPAT}"`" ; export DYLD_FALLBACK_LIBRARY_PATH
-   # Linux
-   LD_LIBRARY_PATH="`dirname "${MULLE_OBJC_EXPAT}"`" ; export LD_LIBRARY_PATH
-
+   MULLE_CLANG="`absolute_path_if_relative "mulle-clang"`"
    test_binary "$MULLE_CLANG"
 fi
 
@@ -630,11 +648,11 @@ else
        dirname="."
     fi
     file=`basename "$TEST"`
-    filename=`basename "$file" .m`
+    filename=`basename "$file" "${SOURCE_EXTENSION}"`
 
     if [ "$file" = "$filename" ]
     then
-       echo "error: source file must have .m extension" >&2
+       echo "error: source file must have ${SOURCE_EXTENSION} extension" >&2
        exit 1
     fi
 
@@ -651,3 +669,4 @@ else
     cd "${old}" || exit 1
     exit $rval
 fi
+

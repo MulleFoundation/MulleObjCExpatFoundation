@@ -26,10 +26,40 @@ src/MulleObjCExpatFoundation.h
 )
 
 
+set( SOURCES
+src/MulleObjCExpatFoundation.c
+src/NSPropertyListSerialization+Expat.m
+)
+
+
 add_library( MulleObjCExpatFoundation STATIC
 src/MulleObjCExpatFoundation.c
 src/NSPropertyListSerialization+Expat.m
 )
 
-INSTALL( TARGETS MulleObjCExpatFoundation DESTINATION "lib")
+add_library( MulleStandaloneObjCExpatFoundation SHARED
+src/MulleStandaloneObjCExpatFoundation.m
+)
+
+add_dependencies( MulleStandaloneObjCExpatFoundation MulleObjCExpatFoundation)
+
+TARGET_LINK_LIBRARIES( MulleStandaloneObjCExpatFoundation
+${BEGIN_ALL_LOAD}
+MulleObjCExpatFoundation
+MulleObjCFoundation
+MulleObjC
+mulle_utf
+mulle_sprintf
+mulle_objc_runtime
+mulle_container
+mulle_concurrent
+mulle_aba
+mulle_allocator
+mulle_test_allocator
+${END_ALL_LOAD}
+)
+
+
+INSTALL( TARGETS MulleObjCExpatFoundation MulleStandaloneObjCExpatFoundation DESTINATION "lib")
+INSTALL( FILES src/MulleStandaloneObjCExpatFoundation.h DESTINATION "include/MulleStandaloneObjCExpatFoundation")
 INSTALL( FILES ${HEADERS} DESTINATION "include/MulleObjCExpatFoundation")
