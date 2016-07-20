@@ -9,24 +9,14 @@
 
 set -m
 
-if [ -z "${DEBUGGER}" ]
-then
-   DEBUGGER=lldb
-fi
-
-DEBUGGER="`which "${DEBUGGER}"`"
-
-if [ -z "${DEBUGGER_LIBRARY_PATH}" ]
-then
-   DEBUGGER_LIBRARY_PATH="`dirname "${DEBUGGER}"`/../lib"
-fi
 
 
 SOURCE_EXTENSION=".m"
 
-LIBRARY_SHORTNAME="ObjCExpatFoundation"
+LIBRARY_SHORTNAME="MulleObjCExpatFoundation"
 SHLIB_PREFIX="lib"
 SHLIB_EXTENSION=".so"
+STANDALONE_SUFFIX="Standalone"
 LDFLAGS="-lexpat"
 
 case `uname` in
@@ -39,7 +29,21 @@ case `uname` in
 esac
 
 
-LIBRARY_FILENAME="${SHLIB_PREFIX}MulleStandalone${LIBRARY_SHORTNAME}${SHLIB_EXTENSION}"
+LIBRARY_FILENAME="${SHLIB_PREFIX}${LIBRARY_SHORTNAME}${STANDALONE_SUFFIX}${SHLIB_EXTENSION}"
+
+
+if [ -z "${DEBUGGER}" ]
+then
+   DEBUGGER=lldb
+fi
+
+DEBUGGER="`which "${DEBUGGER}"`"
+
+if [ -z "${DEBUGGER_LIBRARY_PATH}" ]
+then
+   DEBUGGER_LIBRARY_PATH="`dirname "${DEBUGGER}"`/../lib"
+fi
+
 
 # check if running a single test or all
 DEFAULTCFLAGS="-w -O0 -g"
@@ -131,12 +135,12 @@ fi
 #
 
 lib="`ls -1 "../lib/${LIBRARY_FILENAME}" 2> /dev/null | tail -1`"
-DEPENDENCIES_INCLUDE="../include"
+DEPENDENCIES_INCLUDE="../dependencies/include"
 
 if [ ! -f "${lib}" ]
 then
+   # xcode
    lib="`ls -1 "../build/Products/Debug/${LIBRARY_FILENAME}" | tail -1 2> /dev/null`"
-   DEPENDENCIES_INCLUDE="../dependencies/include"
 fi
 
 LIBRARY="${1:-${lib}}"
@@ -148,14 +152,23 @@ then
    exit 1
 fi
 
-LIBRARY_INCLUDE="`dirname "${LIBRARY}"`"
 
+LIBRARY_INCLUDE="`dirname "${LIBRARY}"`"
 if [ -d "${LIBRARY_INCLUDE}/usr/local/include" ]
 then
+   # xcode
    LIBRARY_INCLUDE="${LIBRARY_INCLUDE}/usr/local/include"
 else
-   LIBRARY_INCLUDE="${LIBRARY_INCLUDE}/include"
+   if [ -d "${LIBRARY_INCLUDE}/include" ]
+   then
+      # xcode2
+      LIBRARY_INCLUDE="${LIBRARY_INCLUDE}/include"
+   else
+      # cmake
+      LIBRARY_INCLUDE="`dirname "${LIBRARY_INCLUDE}"`/include"
+   fi
 fi
+
 
 
 
@@ -344,7 +357,7 @@ run()
    local fail
    local match
 
-   random=`mktemp -t "MulleObjCOSFoundation.XXXX"`
+   random=`mktemp -t "${LIBRARY_SHORTNAME}.XXXX"`
    output="$random.stdout"
    errput="$random.stderr"
    errors=`basename $m_source .m`.errors

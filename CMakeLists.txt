@@ -37,20 +37,20 @@ src/MulleObjCExpatFoundation.c
 src/NSPropertyListSerialization+Expat.m
 )
 
-add_library( MulleStandaloneObjCExpatFoundation SHARED
-src/MulleStandaloneObjCExpatFoundation.m
+add_library( MulleObjCExpatFoundationStandalone SHARED
+src/MulleObjCExpatFoundationStandalone.m
 )
 
-add_dependencies( MulleStandaloneObjCExpatFoundation MulleObjCExpatFoundation)
+add_dependencies( MulleObjCExpatFoundationStandalone MulleObjCExpatFoundation)
 
-TARGET_LINK_LIBRARIES( MulleStandaloneObjCExpatFoundation
+TARGET_LINK_LIBRARIES( MulleObjCExpatFoundationStandalone
 ${BEGIN_ALL_LOAD}
 MulleObjCExpatFoundation
 MulleObjCFoundation
 MulleObjC
 mulle_utf
 mulle_sprintf
-mulle_objc_runtime
+mulle_objc
 mulle_container
 mulle_concurrent
 mulle_aba
@@ -61,6 +61,5 @@ ${END_ALL_LOAD}
 )
 
 
-INSTALL( TARGETS MulleObjCExpatFoundation MulleStandaloneObjCExpatFoundation DESTINATION "lib")
-INSTALL( FILES src/MulleStandaloneObjCExpatFoundation.h DESTINATION "include/MulleStandaloneObjCExpatFoundation")
+INSTALL( TARGETS MulleObjCExpatFoundation MulleObjCExpatFoundationStandalone DESTINATION "lib")
 INSTALL( FILES ${HEADERS} DESTINATION "include/MulleObjCExpatFoundation")

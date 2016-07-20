@@ -149,7 +149,6 @@ static NSString  *_keyForCString( char *s)
       return( _PlistKey);
       
    MulleObjCThrowInvalidArgumentException( @"unknown key");
-   return( 0);
 }
 
 

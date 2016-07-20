@@ -30,14 +30,13 @@
 		4146F71F1CDCAF80007DB865 /* libmulle_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4146F7131CDCAF80007DB865 /* libmulle_thread.a */; };
 		4146F7201CDCAF80007DB865 /* libmulle_test_allocator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4146F7141CDCAF80007DB865 /* libmulle_test_allocator.a */; };
 		4146F7211CDCAF80007DB865 /* libmulle_sprintf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4146F7151CDCAF80007DB865 /* libmulle_sprintf.a */; };
-		4146F7221CDCAF80007DB865 /* libmulle_objc_runtime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4146F7161CDCAF80007DB865 /* libmulle_objc_runtime.a */; };
+		4146F7221CDCAF80007DB865 /* libmulle_objc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4146F7161CDCAF80007DB865 /* libmulle_objc.a */; };
 		4146F7231CDCAF80007DB865 /* libmulle_container.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4146F7171CDCAF80007DB865 /* libmulle_container.a */; };
 		4146F7241CDCAF80007DB865 /* libmulle_concurrent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4146F7181CDCAF80007DB865 /* libmulle_concurrent.a */; };
 		4146F7251CDCAF80007DB865 /* libmulle_allocator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4146F7191CDCAF80007DB865 /* libmulle_allocator.a */; };
 		4146F7261CDCAF80007DB865 /* libmulle_aba.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4146F71A1CDCAF80007DB865 /* libmulle_aba.a */; };
-		4146F73B1CDCBBCC007DB865 /* libMulleStandaloneObjCExpatFoundation.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4174E7131CDCA7E000506320 /* libMulleStandaloneObjCExpatFoundation.dylib */; };
-		4174E71B1CDCA82200506320 /* MulleStandaloneObjCExpatFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4174E7191CDCA82200506320 /* MulleStandaloneObjCExpatFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4174E71C1CDCA82200506320 /* MulleStandaloneObjCExpatFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4174E71A1CDCA82200506320 /* MulleStandaloneObjCExpatFoundation.m */; };
+		4146F73B1CDCBBCC007DB865 /* libMulleObjCExpatFoundationStandalone.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4174E7131CDCA7E000506320 /* libMulleObjCExpatFoundationStandalone.dylib */; };
+		4174E71C1CDCA82200506320 /* MulleObjCExpatFoundationStandalone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4174E71A1CDCA82200506320 /* MulleObjCExpatFoundationStandalone.m */; };
 		417CEB571CDFDA450037B7BE /* complex.m in Sources */ = {isa = PBXBuildFile; fileRef = 417CEB561CDFDA450037B7BE /* complex.m */; };
 		41A316B91CDBFB7B00C0CED9 /* MulleObjCExpatFoundation.c in Sources */ = {isa = PBXBuildFile; fileRef = 41A316B81CDBFB7B00C0CED9 /* MulleObjCExpatFoundation.c */; };
 		41EFB4B21CDCDA5700664A7E /* libexpat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41EFB4B11CDCDA5700664A7E /* libexpat.a */; };
@@ -77,22 +76,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4146F70F1CDCAF80007DB865 /* libMulleObjCFoundation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMulleObjCFoundation.a; path = dependencies/lib/Debug/libMulleObjCFoundation.a; sourceTree = "<group>"; };
-		4146F7101CDCAF80007DB865 /* libMulleObjC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMulleObjC.a; path = dependencies/lib/Debug/libMulleObjC.a; sourceTree = "<group>"; };
-		4146F7111CDCAF80007DB865 /* libmulle_vararg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_vararg.a; path = dependencies/lib/Debug/libmulle_vararg.a; sourceTree = "<group>"; };
-		4146F7121CDCAF80007DB865 /* libmulle_utf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_utf.a; path = dependencies/lib/Debug/libmulle_utf.a; sourceTree = "<group>"; };
-		4146F7131CDCAF80007DB865 /* libmulle_thread.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_thread.a; path = dependencies/lib/Debug/libmulle_thread.a; sourceTree = "<group>"; };
-		4146F7141CDCAF80007DB865 /* libmulle_test_allocator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_test_allocator.a; path = dependencies/lib/Debug/libmulle_test_allocator.a; sourceTree = "<group>"; };
-		4146F7151CDCAF80007DB865 /* libmulle_sprintf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_sprintf.a; path = dependencies/lib/Debug/libmulle_sprintf.a; sourceTree = "<group>"; };
-		4146F7161CDCAF80007DB865 /* libmulle_objc_runtime.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_objc_runtime.a; path = dependencies/lib/Debug/libmulle_objc_runtime.a; sourceTree = "<group>"; };
-		4146F7171CDCAF80007DB865 /* libmulle_container.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_container.a; path = dependencies/lib/Debug/libmulle_container.a; sourceTree = "<group>"; };
-		4146F7181CDCAF80007DB865 /* libmulle_concurrent.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_concurrent.a; path = dependencies/lib/Debug/libmulle_concurrent.a; sourceTree = "<group>"; };
-		4146F7191CDCAF80007DB865 /* libmulle_allocator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_allocator.a; path = dependencies/lib/Debug/libmulle_allocator.a; sourceTree = "<group>"; };
-		4146F71A1CDCAF80007DB865 /* libmulle_aba.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_aba.a; path = dependencies/lib/Debug/libmulle_aba.a; sourceTree = "<group>"; };
+		4146F70F1CDCAF80007DB865 /* libMulleObjCFoundation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMulleObjCFoundation.a; path = dependencies/lib/libMulleObjCFoundation.a; sourceTree = "<group>"; };
+		4146F7101CDCAF80007DB865 /* libMulleObjC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMulleObjC.a; path = dependencies/lib/libMulleObjC.a; sourceTree = "<group>"; };
+		4146F7111CDCAF80007DB865 /* libmulle_vararg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_vararg.a; path = dependencies/lib/libmulle_vararg.a; sourceTree = "<group>"; };
+		4146F7121CDCAF80007DB865 /* libmulle_utf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_utf.a; path = dependencies/lib/libmulle_utf.a; sourceTree = "<group>"; };
+		4146F7131CDCAF80007DB865 /* libmulle_thread.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_thread.a; path = dependencies/lib/libmulle_thread.a; sourceTree = "<group>"; };
+		4146F7141CDCAF80007DB865 /* libmulle_test_allocator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_test_allocator.a; path = dependencies/lib/libmulle_test_allocator.a; sourceTree = "<group>"; };
+		4146F7151CDCAF80007DB865 /* libmulle_sprintf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_sprintf.a; path = dependencies/lib/libmulle_sprintf.a; sourceTree = "<group>"; };
+		4146F7161CDCAF80007DB865 /* libmulle_objc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_objc.a; path = dependencies/lib/libmulle_objc.a; sourceTree = "<group>"; };
+		4146F7171CDCAF80007DB865 /* libmulle_container.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_container.a; path = dependencies/lib/libmulle_container.a; sourceTree = "<group>"; };
+		4146F7181CDCAF80007DB865 /* libmulle_concurrent.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_concurrent.a; path = dependencies/lib/libmulle_concurrent.a; sourceTree = "<group>"; };
+		4146F7191CDCAF80007DB865 /* libmulle_allocator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_allocator.a; path = dependencies/lib/libmulle_allocator.a; sourceTree = "<group>"; };
+		4146F71A1CDCAF80007DB865 /* libmulle_aba.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_aba.a; path = dependencies/lib/libmulle_aba.a; sourceTree = "<group>"; };
 		4146F7301CDCBB96007DB865 /* some_test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = some_test; sourceTree = BUILT_PRODUCTS_DIR; };
-		4174E7131CDCA7E000506320 /* libMulleStandaloneObjCExpatFoundation.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libMulleStandaloneObjCExpatFoundation.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		4174E7191CDCA82200506320 /* MulleStandaloneObjCExpatFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MulleStandaloneObjCExpatFoundation.h; sourceTree = "<group>"; };
-		4174E71A1CDCA82200506320 /* MulleStandaloneObjCExpatFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MulleStandaloneObjCExpatFoundation.m; sourceTree = "<group>"; };
+		4174E7131CDCA7E000506320 /* libMulleObjCExpatFoundationStandalone.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libMulleObjCExpatFoundationStandalone.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		4174E71A1CDCA82200506320 /* MulleObjCExpatFoundationStandalone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MulleObjCExpatFoundationStandalone.m; sourceTree = "<group>"; };
 		417CEB561CDFDA450037B7BE /* complex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = complex.m; path = tests/examples/complex.m; sourceTree = SOURCE_ROOT; };
 		41A316B81CDBFB7B00C0CED9 /* MulleObjCExpatFoundation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MulleObjCExpatFoundation.c; sourceTree = "<group>"; };
 		41D115261CED0DB600264476 /* RELEASENOTES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RELEASENOTES.md; sourceTree = "<group>"; };
@@ -131,7 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4146F73B1CDCBBCC007DB865 /* libMulleStandaloneObjCExpatFoundation.dylib in Frameworks */,
+				4146F73B1CDCBBCC007DB865 /* libMulleObjCExpatFoundationStandalone.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +146,7 @@
 				4146F71F1CDCAF80007DB865 /* libmulle_thread.a in Frameworks */,
 				4146F7201CDCAF80007DB865 /* libmulle_test_allocator.a in Frameworks */,
 				4146F7211CDCAF80007DB865 /* libmulle_sprintf.a in Frameworks */,
-				4146F7221CDCAF80007DB865 /* libmulle_objc_runtime.a in Frameworks */,
+				4146F7221CDCAF80007DB865 /* libmulle_objc.a in Frameworks */,
 				4146F7231CDCAF80007DB865 /* libmulle_container.a in Frameworks */,
 				4146F7241CDCAF80007DB865 /* libmulle_concurrent.a in Frameworks */,
 				4146F7251CDCAF80007DB865 /* libmulle_allocator.a in Frameworks */,
@@ -178,7 +176,7 @@
 				4146F7131CDCAF80007DB865 /* libmulle_thread.a */,
 				4146F7141CDCAF80007DB865 /* libmulle_test_allocator.a */,
 				4146F7151CDCAF80007DB865 /* libmulle_sprintf.a */,
-				4146F7161CDCAF80007DB865 /* libmulle_objc_runtime.a */,
+				4146F7161CDCAF80007DB865 /* libmulle_objc.a */,
 				4146F7171CDCAF80007DB865 /* libmulle_container.a */,
 				4146F7181CDCAF80007DB865 /* libmulle_concurrent.a */,
 				4146F7191CDCAF80007DB865 /* libmulle_allocator.a */,
@@ -213,7 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				41FE547C1CDA5CB400EDC57F /* libMulleObjCExpatFoundation.a */,
-				4174E7131CDCA7E000506320 /* libMulleStandaloneObjCExpatFoundation.dylib */,
+				4174E7131CDCA7E000506320 /* libMulleObjCExpatFoundationStandalone.dylib */,
 				4146F7301CDCBB96007DB865 /* some_test */,
 			);
 			name = Products;
@@ -224,8 +222,7 @@
 			children = (
 				41FE54871CDA5D6D00EDC57F /* MulleObjCExpatFoundation.h */,
 				41A316B81CDBFB7B00C0CED9 /* MulleObjCExpatFoundation.c */,
-				4174E7191CDCA82200506320 /* MulleStandaloneObjCExpatFoundation.h */,
-				4174E71A1CDCA82200506320 /* MulleStandaloneObjCExpatFoundation.m */,
+				4174E71A1CDCA82200506320 /* MulleObjCExpatFoundationStandalone.m */,
 				41FE54851CDA5D3F00EDC57F /* NSPropertyListSerialization+Expat.m */,
 			);
 			path = src;
@@ -266,7 +263,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4174E71B1CDCA82200506320 /* MulleStandaloneObjCExpatFoundation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,9 +294,9 @@
 			productReference = 4146F7301CDCBB96007DB865 /* some_test */;
 			productType = "com.apple.product-type.tool";
 		};
-		4174E7121CDCA7E000506320 /* MulleStandaloneObjCExpatFoundation */ = {
+		4174E7121CDCA7E000506320 /* MulleObjCExpatFoundationStandalone */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4174E7161CDCA7E000506320 /* Build configuration list for PBXNativeTarget "MulleStandaloneObjCExpatFoundation" */;
+			buildConfigurationList = 4174E7161CDCA7E000506320 /* Build configuration list for PBXNativeTarget "MulleObjCExpatFoundationStandalone" */;
 			buildPhases = (
 				4174E70F1CDCA7E000506320 /* Sources */,
 				4174E7101CDCA7E000506320 /* Frameworks */,
@@ -311,9 +307,9 @@
 			dependencies = (
 				4174E7181CDCA7EC00506320 /* PBXTargetDependency */,
 			);
-			name = MulleStandaloneObjCExpatFoundation;
+			name = MulleObjCExpatFoundationStandalone;
 			productName = MulleStandaloneObjCExpatFoundation;
-			productReference = 4174E7131CDCA7E000506320 /* libMulleStandaloneObjCExpatFoundation.dylib */;
+			productReference = 4174E7131CDCA7E000506320 /* libMulleObjCExpatFoundationStandalone.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		41FE547B1CDA5CB400EDC57F /* MulleObjCExpatFoundation */ = {
@@ -370,7 +366,7 @@
 			targets = (
 				41FE549F1CDA5DAB00EDC57F /* Libraries */,
 				41FE547B1CDA5CB400EDC57F /* MulleObjCExpatFoundation */,
-				4174E7121CDCA7E000506320 /* MulleStandaloneObjCExpatFoundation */,
+				4174E7121CDCA7E000506320 /* MulleObjCExpatFoundationStandalone */,
 				4146F72F1CDCBB96007DB865 /* some_test */,
 			);
 		};
@@ -389,7 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4174E71C1CDCA82200506320 /* MulleStandaloneObjCExpatFoundation.m in Sources */,
+				4174E71C1CDCA82200506320 /* MulleObjCExpatFoundationStandalone.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,12 +403,12 @@
 /* Begin PBXTargetDependency section */
 		4146F7291CDCAFAB007DB865 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4174E7121CDCA7E000506320 /* MulleStandaloneObjCExpatFoundation */;
+			target = 4174E7121CDCA7E000506320 /* MulleObjCExpatFoundationStandalone */;
 			targetProxy = 4146F7281CDCAFAB007DB865 /* PBXContainerItemProxy */;
 		};
 		4146F73A1CDCBBC8007DB865 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4174E7121CDCA7E000506320 /* MulleStandaloneObjCExpatFoundation */;
+			target = 4174E7121CDCA7E000506320 /* MulleObjCExpatFoundationStandalone */;
 			targetProxy = 4146F7391CDCBBC8007DB865 /* PBXContainerItemProxy */;
 		};
 		4174E7181CDCA7EC00506320 /* PBXTargetDependency */ = {
@@ -510,7 +506,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4174E7161CDCA7E000506320 /* Build configuration list for PBXNativeTarget "MulleStandaloneObjCExpatFoundation" */ = {
+		4174E7161CDCA7E000506320 /* Build configuration list for PBXNativeTarget "MulleObjCExpatFoundationStandalone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4174E7141CDCA7E000506320 /* Debug */,

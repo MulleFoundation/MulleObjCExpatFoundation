@@ -7,7 +7,7 @@
 //
 
 
-#import <MulleStandaloneObjCExpatFoundation/MulleStandaloneObjCExpatFoundation.h>
+#import <MulleObjCExpatFoundation/MulleObjCExpatFoundation.h>
 //#import "MulleStandaloneObjCFoundation.h"
 
 
