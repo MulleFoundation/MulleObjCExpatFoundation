@@ -14,3 +14,4 @@ project.xcworkspace/
 tmp/
 *.dSYM/
 *.exe
+mulle-tests/
