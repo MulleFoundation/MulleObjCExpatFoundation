@@ -65,9 +65,9 @@ int   main( int argc, const char * argv[])
                                                       format:NULL
                                             errorDescription:&error];
    if( ! plist)
-      NSLog( @"Error: %@", error);
+      fprintf( stderr, "Error: %s", [error UTF8String]);
    else
-      NSLog( @"Plist: %@", plist);
+      fprintf( stderr, "Error: %s", [[plist description] UTF8String]);
 
    return( 0);
 }

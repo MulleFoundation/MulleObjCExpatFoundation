@@ -22,8 +22,6 @@
 #include <ctype.h>
 
 
-extern void  NSLog( NSString *format, ...);
-
 
 #define XML_DEBUG     (defined( DEBUG) & 0)
 #define STACK_DEBUG   (defined( DEBUG) & 0)
@@ -415,8 +413,8 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
    if( maxlength > 256)
       maxlength = 256;
 
-   NSLog( @"XML line %ld, at '%s': %s", line, c_buf, error);
-   NSLog( @"%.*s", maxlength, s);
+   fprintf( stderr, "XML line %ld, at '%s': %s", line, c_buf, error);
+   fprintf( stderr, "%.*s", maxlength, s);
 
    // output marker if line is not too large
    if( column > 256 - 3)
@@ -426,7 +424,7 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
       char   buf[ column + 5];
       
       paint_arrow( buf, (int) column);
-      NSLog( @"%.*s", maxlength, buf);
+      fprintf( stderr, "%.*s", maxlength, buf);
    }
 }
 
