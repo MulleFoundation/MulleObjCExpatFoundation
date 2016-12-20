@@ -22,7 +22,6 @@
 #include <ctype.h>
 
 
-
 #define XML_DEBUG     (defined( DEBUG) & 0)
 #define STACK_DEBUG   (defined( DEBUG) & 0)
 

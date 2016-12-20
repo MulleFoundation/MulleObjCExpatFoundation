@@ -1,5 +1,3 @@
-ssh://git@mulle-kybernetik.com:23/MulleObjCFoundation
-
 #
 # building expat is difficult, because it fails to build the man file
 # for which it needs a million prerequisites
@@ -7,3 +5,5 @@ ssh://git@mulle-kybernetik.com:23/MulleObjCFoundation
 # the OS X expat is too old
 #
 #git://git.code.sf.net/p/expat/code_git;expat
+${MULLE_PRIVATE_REPOSITORIES}/MulleObjCFoundation;;${MULLE_OBJC_FOUNDATION_BRANCH:-release}
+
