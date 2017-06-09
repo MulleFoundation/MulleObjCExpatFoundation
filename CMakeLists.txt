@@ -3,7 +3,7 @@ cmake_minimum_required (VERSION 3.0)
 project (MulleObjCExpatFoundation)
 
 
-set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/mulle-configuration)
+set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/mulle-configuration/cmake)
 message(STATUS "CMAKE_MODULE_PATH is ${CMAKE_MODULE_PATH}")
 message(STATUS "CMAKE_BUILD_TYPE is ${CMAKE_BUILD_TYPE}")
 
@@ -32,6 +32,7 @@ src/MulleObjCExpatFoundation.h
 set( SOURCES
 src/MulleObjCExpatFoundation.c
 src/NSPropertyListSerialization+Expat.m
+src/MulleObjCLoader+Expat.m
 )
 
 
@@ -80,8 +81,8 @@ ${MULLE_UTF_LIBRARY}
 
 
 add_library( MulleObjCExpatFoundation STATIC
-src/MulleObjCExpatFoundation.c
-src/NSPropertyListSerialization+Expat.m
+${SOURCES}
+${HEADERS}
 )
 
 add_library( MulleObjCExpatFoundationStandalone SHARED

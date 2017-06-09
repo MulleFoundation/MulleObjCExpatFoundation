@@ -14,3 +14,5 @@ include/
 *.debug
 *.exe
 *.dSYM/
+.DS_Storebin/tap-info.sh
+tap-info.sh

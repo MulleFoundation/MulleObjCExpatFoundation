@@ -3,7 +3,7 @@
  *
  *  NSPropertyListSerialization+ExpatPropertyList.m is a part of MulleFoundation
  *
- *  Copyright (C) 2011 Nat!, Mulle kybernetiK 
+ *  Copyright (C) 2011 Nat!, Mulle kybernetiK
  *  All rights reserved.
  *
  *  Coded by Nat!
@@ -21,9 +21,14 @@
 #include <expat.h>
 #include <ctype.h>
 
+#ifndef DEBUG
+# define XML_DEBUG     0
+# define STACK_DEBUG   0
+#else
+# define XML_DEBUG     0
+# define STACK_DEBUG   0
+#endif
 
-#define XML_DEBUG     (defined( DEBUG) & 0)
-#define STACK_DEBUG   (defined( DEBUG) & 0)
 
 /*
 <?xml version="1.0" encoding="UTF-8"?>
@@ -62,7 +67,7 @@ static void   pushKeyObj( NSPropertyListSerialization *self,
                           id value)
 {
    struct mulle_pointerpair   pair;
-   
+
    pair._key   = key;
    pair._value = value;
    mulle_pointerpairarray_add( &self->_stack, pair);
@@ -75,7 +80,7 @@ static void   pushKeyObj( NSPropertyListSerialization *self,
 static NSString  *peekKey( NSPropertyListSerialization *self)
 {
    struct mulle_pointerpair   *pair;
-   
+
    pair = mulle_pointerpairarray_find_last( &self->_stack);
    return( pair ? pair->_key : pair);
 }
@@ -84,11 +89,11 @@ static NSString  *peekKey( NSPropertyListSerialization *self)
 static void   *popKeyObj( NSPropertyListSerialization *self, id *value)
 {
    struct mulle_pointerpair   pair;
-   
+
    pair = mulle_pointerpairarray_remove_last( &self->_stack);
    if( value)
       *value = pair._value;
-   
+
 #if STACK_DEBUG
    fprintf( stderr, "-key : %s %s\n", [(id) pair._key UTF8String], [[(id) pair._value description] UTF8String]);
 #endif
@@ -99,7 +104,7 @@ static void   *popKeyObj( NSPropertyListSerialization *self, id *value)
 static void   emptyObjects( NSPropertyListSerialization *self)
 {
    id   value;
-   
+
    while( popKeyObj( self, &value))
       [value release];
 }
@@ -122,7 +127,7 @@ static NSString  *_keyForCString( char *s)
 {
    if( ! strcmp( s, "key"))
       return( _KeyKey);
-      
+
    if( ! strcmp( s, "string"))
       return( _StringKey);
    if( ! strcmp( s, "integer"))
@@ -137,14 +142,14 @@ static NSString  *_keyForCString( char *s)
       return( _DateKey);
    if( ! strcmp( s, "data"))
       return( _DataKey);
-      
+
    if( ! strcmp( s, "array"))
       return( _ArrayKey);
    if( ! strcmp( s, "dict"))
       return( _DictionaryKey);
    if( ! strcmp( s, "plist"))
       return( _PlistKey);
-      
+
    MulleObjCThrowInvalidArgumentException( @"unknown key");
 }
 
@@ -156,15 +161,15 @@ static void   start_elem_handler( void *_self, XML_Char *name, XML_Char **attrib
 {
    NSPropertyListSerialization    *self;
    NSString                       *key;
-  
+
 #if XML_DEBUG
    fprintf( stderr, "<%s>\n", name);
-#endif     
+#endif
    self = (NSPropertyListSerialization *) _self;
-  
+
    key = _keyForCString( name);
    pushKeyObj( self, key, nil);
-   
+
    [self->_textStorage setString:nil]; // jettison trash
 }
 
@@ -173,23 +178,23 @@ static void    char_data_handler( void *_self, XML_Char *s, int len)
 {
    NSPropertyListSerialization    *self;
    NSString                       *text;
-   
+
    self = (NSPropertyListSerialization *) _self;
-   
+
    assert( self->_textStorage);
-   
+
    if( len == 1 && *s == '\n')
    {
       [self->_textStorage appendString:@"\n"];
       return;
    }
-   
+
 #if XML_DEBUG
    fprintf( stderr, "%.*s\n", len, s);
-#endif     
+#endif
    text = [[NSString alloc] _initWithUTF8Characters:(void *) s
                                              length:len];
-      
+
    [self->_textStorage appendString:text];
    [text release];
 }
@@ -213,17 +218,17 @@ static void    end_elem_handler( void *_self, const XML_Char *name)
    id                            obj;
    id                            child;
    NSData                        *data;
-   
+
 #if XML_DEBUG
    fprintf( stderr, "</%s>\n", name);
-#endif     
+#endif
    self = (NSPropertyListSerialization *) _self;
    key  = _keyForCString( (char *) name);
    text = [self->_textStorage copy];
    [self->_textStorage setString:nil];
-   
+
    match = popKeyObj( self, &child);
-   
+
    do
    {
       if( key == _KeyKey)
@@ -239,32 +244,32 @@ static void    end_elem_handler( void *_self, const XML_Char *name)
          obj = text;
          break;
       }
-      
+
       if( key == _IntegerKey)
       {
          NSCParameterAssert( match == _IntegerKey);
          obj = [[NSNumber alloc] initWithInteger:[text integerValue]];
          break;
       }
-      
+
       if( key == _RealKey)
       {
          NSCParameterAssert( match == _RealKey);
          obj = [[NSNumber alloc] initWithDouble:[text doubleValue]];
          break;
       }
-      
+
       if( key == _DateKey)
       {
          NSCParameterAssert( match == _DateKey);
          obj = [[[self dateFormatter] dateFromString:text] retain];
          break;
       }
-      
+
       if( key == _DataKey)
-      {  
+      {
          NSCParameterAssert( match == _DataKey);
-         
+
          data = [text dataUsingEncoding:NSUTF8StringEncoding];
          obj  = [NSPropertyListSerialization propertyListFromData:data
                                                  mutabilityOption:NSPropertyListImmutable
@@ -273,21 +278,21 @@ static void    end_elem_handler( void *_self, const XML_Char *name)
          [obj retain];
          break;
       }
-      
+
       if( key == _TrueKey)
       {
          NSCParameterAssert( match == _TrueKey);
          obj = [[NSNumber alloc] initWithBool:YES];
          break;
       }
-      
+
       if( key == _FalseKey)
       {
          NSCParameterAssert( match == _FalseKey);
          obj = [[NSNumber alloc] initWithBool:NO];
          break;
       }
-      
+
       if( key == _ArrayKey)
       {
          obj = [NSMutableArray new];
@@ -304,7 +309,7 @@ static void    end_elem_handler( void *_self, const XML_Char *name)
          }
          break;
       }
-      
+
       if( key == _DictionaryKey)
       {
          obj = [NSMutableDictionary new];
@@ -316,7 +321,7 @@ static void    end_elem_handler( void *_self, const XML_Char *name)
             match = popKeyObj( self, &key);
             if( match != _KeyKey)
                MulleObjCThrowInvalidArgumentException( @"invalid %@", match);
-            
+
             [obj setObject:child
                     forKey:key];
             [child release];
@@ -326,22 +331,22 @@ static void    end_elem_handler( void *_self, const XML_Char *name)
          }
          break;
       }
-      
+
       if( key == _PlistKey)
       {
          match = popKeyObj( self, NULL); // pop off plist
          NSCParameterAssert( match == _PlistKey);
-         
+
          obj = child;
          break;
       }
-      
+
 #if DEBUG
       abort();
-#endif      
+#endif
    }
    while( 0);
-   
+
    if( ! obj)
       MulleObjCThrowInvalidArgumentException( @"Plist unparsable at <%s %@>", name, text);
 
@@ -356,7 +361,7 @@ static void    end_elem_handler( void *_self, const XML_Char *name)
 static void  paint_arrow( char *buf, int column)
 {
    int   i;
-   
+
    if( column < 3)
    {
       for( i = 0; i < column; i++)
@@ -388,7 +393,7 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
    char             *s;
    int              maxlength;
    char             c_buf[ 6];
-   
+
    line   = XML_GetCurrentLineNumber( parser);
    column = XML_GetCurrentColumnNumber( parser);
    index  = XML_GetCurrentByteIndex( parser);
@@ -418,10 +423,10 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
    // output marker if line is not too large
    if( column > 256 - 3)
       return;
-   
+
    {
       char   buf[ column + 5];
-      
+
       paint_arrow( buf, (int) column);
       fprintf( stderr, "%.*s", maxlength, buf);
    }
@@ -439,17 +444,17 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
    int                      inv_rval;
    size_t                   xml_len;
    struct mulle_allocator   *allocator;
-   
+
    NSParameterAssert( [data length]); // should have been checked already
-   
+
    inv_rval = 0;
    pool = [NSAutoreleasePool new];
    {
       NSCParameterAssert( ! self->_textStorage);
-      
+
       parser = XML_ParserCreate( NULL);
       allocator = MulleObjCObjectGetAllocator( self);
-      
+
       mulle_pointerpairarray_init( &self->_stack, 128, NULL, allocator);
 
       _textStorage = [NSMutableString string];
@@ -470,13 +475,13 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
             MulleObjCThrowInvalidArgumentException( @"no XML text");
          if( xml_s[ xml_len  - 1])
             break;
-         
+
          // remove trailing zeroes
          --xml_len;
       }
-   
+
       inv_rval = XML_Parse( parser, xml_s, (int) xml_len, YES);
-      
+
       if( inv_rval)
       {
          NSCParameterAssert( mulle_pointerpairarray_get_count( &self->_stack) == 1);
@@ -486,24 +491,24 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
       }
       else
          print_xml_error( parser, xml_s, xml_len);
-   
+
    NS_HANDLER
       exception = localException;
    NS_ENDHANDLER
       XML_ParserFree( parser);
 
       emptyObjects( self);
-      
+
       mulle_pointerpairarray_done( &self->_stack);
       _textStorage = 0;
       [exception raise];
-      
+
       [plist retain];
    }
    [pool release];
-   
+
    [plist autorelease];
-   
+
    return( inv_rval ? plist : nil);
 }
 
@@ -514,7 +519,7 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
    NSString                                   *separator;
    NSMutableString                            *s;
    struct mulle_pointerpair                   *pair;
-   
+
    s = [NSMutableString string];
    [s appendString:@"<"];
 
@@ -526,7 +531,7 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
       separator = @", ";
    }
    mulle_pointerpairarray_enumerator_done( &pair_rover);
-   
+
    [s appendString:@">"];
 
    return( s);

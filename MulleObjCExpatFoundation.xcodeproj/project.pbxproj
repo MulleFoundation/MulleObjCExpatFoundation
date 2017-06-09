@@ -22,6 +22,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		414618161EC6070400D63AFA /* MulleObjCLoader+Expat.m in Sources */ = {isa = PBXBuildFile; fileRef = 414618141EC6070400D63AFA /* MulleObjCLoader+Expat.m */; };
 		4146F70E1CDCAF67007DB865 /* libMulleObjCExpatFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FE547C1CDA5CB400EDC57F /* libMulleObjCExpatFoundation.a */; };
 		4146F71B1CDCAF80007DB865 /* libMulleObjCFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4146F70F1CDCAF80007DB865 /* libMulleObjCFoundation.a */; };
 		4146F71C1CDCAF80007DB865 /* libMulleObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4146F7101CDCAF80007DB865 /* libMulleObjC.a */; };
@@ -76,6 +77,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		414618141EC6070400D63AFA /* MulleObjCLoader+Expat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MulleObjCLoader+Expat.m"; sourceTree = "<group>"; };
 		4146F70F1CDCAF80007DB865 /* libMulleObjCFoundation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMulleObjCFoundation.a; path = dependencies/lib/libMulleObjCFoundation.a; sourceTree = "<group>"; };
 		4146F7101CDCAF80007DB865 /* libMulleObjC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMulleObjC.a; path = dependencies/lib/libMulleObjC.a; sourceTree = "<group>"; };
 		4146F7111CDCAF80007DB865 /* libmulle_vararg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmulle_vararg.a; path = dependencies/lib/libmulle_vararg.a; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 		41FE54831CDA5CFF00EDC57F /* src */ = {
 			isa = PBXGroup;
 			children = (
+				414618141EC6070400D63AFA /* MulleObjCLoader+Expat.m */,
 				41FE54871CDA5D6D00EDC57F /* MulleObjCExpatFoundation.h */,
 				41A316B81CDBFB7B00C0CED9 /* MulleObjCExpatFoundation.c */,
 				4174E71A1CDCA82200506320 /* MulleObjCExpatFoundationStandalone.m */,
@@ -394,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41FE54861CDA5D3F00EDC57F /* NSPropertyListSerialization+Expat.m in Sources */,
+				414618161EC6070400D63AFA /* MulleObjCLoader+Expat.m in Sources */,
 				41A316B91CDBFB7B00C0CED9 /* MulleObjCExpatFoundation.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,6 +462,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 41FE548D1CDA5D8400EDC57F /* Debug.xcconfig */;
 			buildSettings = {
+				DEPENDENCIES_DIR = "$(PROJECT_DIR)/../dependencies";
 			};
 			name = Debug;
 		};
@@ -465,6 +470,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 41FE54971CDA5D8400EDC57F /* Release.xcconfig */;
 			buildSettings = {
+				DEPENDENCIES_DIR = "$(PROJECT_DIR)/../dependencies";
 			};
 			name = Release;
 		};
