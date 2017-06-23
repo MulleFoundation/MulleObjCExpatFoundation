@@ -1,0 +1,50 @@
+include( ${DEPENDENCIES_DIR}/include/MulleObjCStandardFoundation/CMakeDependencies.txt)
+
+if( NOT MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY)
+   find_library( MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY NAMES MulleObjCStandardFoundation)
+   message(STATUS "MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY is ${MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY}")
+   set( OBJC_DEPENDENCY_LIBRARIES
+${OBJC_DEPENDENCY_LIBRARIES}
+${MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY}
+CACHE INTERNAL "need to cache this"
+)
+   set( OBJC_DEPENDENCY_NAMES
+${OBJC_DEPENDENCY_NAMES}
+MulleObjCStandardFoundation
+CACHE INTERNAL "need to cache this"
+)
+endif()
+
+if( NOT EXPAT_LIBRARIES)
+   #
+   # will always find shared it seems
+   # even with CMAKE_FIND_LIBRARY_SUFFIXES set...
+   #
+   #IF( WIN32)
+   #    set( CMAKE_FIND_LIBRARY_SUFFIXES .lib .a) # ${CMAKE_FIND_LIBRARY_SUFFIXES})
+   #ELSE()
+   #    set( CMAKE_FIND_LIBRARY_SUFFIXES .a) # ${CMAKE_FIND_LIBRARY_SUFFIXES})
+   #ENDIF()
+
+   include( FindEXPAT)
+   find_package( EXPAT 2.0 REQUIRED)
+
+   #
+   # this works...
+   #
+   find_library( STATIC_EXPAT NAMES libexpat.a)
+
+   if( STATIC_EXPAT)
+     set( EXPAT_LIBRARIES ${STATIC_EXPAT})
+   endif()
+   message(STATUS "EXPAT_LIBRARIES is ${EXPAT_LIBRARIES}")
+
+   set( C_DEPENDENCY_LIBRARIES
+${C_DEPENDENCY_LIBRARIES}
+${EXPAT_LIBRARIES}
+CACHE INTERNAL "need to cache this"
+)
+endif()
+
+
+message( STATUS "# Included MulleObjCExpatFoundation CMakeDependencies.txt")

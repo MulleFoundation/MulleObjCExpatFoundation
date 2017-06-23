@@ -11,11 +11,11 @@
  *  $Id$
  *
  */
-#import <MulleObjCFoundation/MulleObjCFoundation.h>
+#import <MulleObjCStandardFoundation/MulleObjCStandardFoundation.h>
 
 // other files in this library
 
-// other libraries of MulleObjCFoundation
+// other libraries of MulleObjCStandardFoundation
 
 // std-c and dependencies
 #include <expat.h>

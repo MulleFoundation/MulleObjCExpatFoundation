@@ -1,0 +1,18 @@
+
+include_directories(
+src
+)
+
+
+set( PUBLIC_HEADERS
+src/MulleObjCExpatFoundation.h
+src/MulleObjCLoader+MulleObjCExpatFoundation.h
+)
+
+
+set( SOURCES
+src/MulleObjCExpatFoundation.c
+src/NSPropertyListSerialization+Expat.m
+src/MulleObjCLoader+MulleObjCExpatFoundation.m
+)
+

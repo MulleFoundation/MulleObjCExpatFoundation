@@ -5,8 +5,8 @@
 //  Created by Nat! on 04.05.16.
 //  Copyright © 2016 Mulle kybernetiK. All rights reserved.
 //
-#import <MulleObjCFoundation/MulleObjCFoundation.h>
+#import <MulleObjCStandardFoundation/MulleObjCStandardFoundation.h>
 
-#define MULLE_OBJC_EXPAT_FOUNDATION_VERSION  ((0 << 20) | (1 << 8) | 0)
+#define MULLE_OBJC_EXPAT_FOUNDATION_VERSION  MULLE_OBJC_FOUNDATION_VERSION
 
-// nothing else in here, yet
+#import "MulleObjCLoader+MulleObjCExpatFoundation.h"
