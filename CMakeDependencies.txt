@@ -25,10 +25,13 @@ if( NOT EXPAT_LIBRARIES)
    #ELSE()
    #    set( CMAKE_FIND_LIBRARY_SUFFIXES .a) # ${CMAKE_FIND_LIBRARY_SUFFIXES})
    #ENDIF()
-
-   include( FindEXPAT)
-   find_package( EXPAT 2.0 REQUIRED)
-
+   #
+   # this produces "bad" link output, since it doesn't set the link
+   # directory correctly, just does -lexpat
+   #
+   # include( FindEXPAT)
+   # find_package( EXPAT 2.0 REQUIRED)
+   #
    #
    # this works...
    #
