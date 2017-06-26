@@ -18,7 +18,7 @@
 // other libraries of MulleObjCStandardFoundation
 
 // std-c and dependencies
-#include <expat.h>
+#include <expat/expat.h>
 #include <ctype.h>
 
 #ifndef DEBUG
