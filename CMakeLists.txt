@@ -15,6 +15,9 @@ else()
   include( Release)
 endif()
 
+set( CMAKE_FIND_ROOT_PATH ${DEPENDENCIES_DIR})
+message( STATUS "CMAKE_FIND_ROOT_PATH is ${CMAKE_FIND_ROOT_PATH}")
+
 
 include( CMakeSourcesAndHeaders.txt)
 include( CMakeDependencies.txt)

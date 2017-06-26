@@ -15,7 +15,8 @@ CACHE INTERNAL "need to cache this"
 )
 endif()
 
-if( NOT EXPAT_LIBRARIES)
+
+if( NOT EXPAT_LIBRARY)
    #
    # will always find shared it seems
    # even with CMAKE_FIND_LIBRARY_SUFFIXES set...
@@ -35,16 +36,12 @@ if( NOT EXPAT_LIBRARIES)
    #
    # this works...
    #
-   find_library( STATIC_EXPAT NAMES libexpat.a)
-
-   if( STATIC_EXPAT)
-     set( EXPAT_LIBRARIES ${STATIC_EXPAT})
-   endif()
-   message(STATUS "EXPAT_LIBRARIES is ${EXPAT_LIBRARIES}")
+   find_library( EXPAT_LIBRARY NAMES libexpat.a)
+   message(STATUS "EXPAT_LIBRARY is ${EXPAT_LIBRARY}")
 
    set( C_DEPENDENCY_LIBRARIES
 ${C_DEPENDENCY_LIBRARIES}
-${EXPAT_LIBRARIES}
+${EXPAT_LIBRARY}
 CACHE INTERNAL "need to cache this"
 )
 endif()
