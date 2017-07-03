@@ -446,7 +446,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 41FE548F1CDA5D8400EDC57F /* DynamicLibraryOSX.xcconfig */;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 0.1;
+				CURRENT_PROJECT_VERSION = 0.9.1;
 			};
 			name = Debug;
 		};
@@ -454,7 +454,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 41FE548F1CDA5D8400EDC57F /* DynamicLibraryOSX.xcconfig */;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 0.1;
+				CURRENT_PROJECT_VERSION = 0.9.1;
 			};
 			name = Release;
 		};
