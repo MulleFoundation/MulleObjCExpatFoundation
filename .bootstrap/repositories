@@ -1,9 +1,7 @@
 #
-# building expat is difficult, because it fails to build the man file
-# for which it needs a million prerequisites
-# so we just brew it
-# the OS X expat is too old
+# for the benefit of dockers who don't want or need a C++ compiler
+# installed our fork is C only
 #
-https://github.com/libexpat/libexpat/archive/R_2_2_1.tar.gz;;;tar
+https://github.com/mulle-nat/libexpat/archive/R_2_2_1.C.tar.gz;;;tar
 
 ${MULLE_FOUNDATION_REPOSITORIES:-https://github.com/mulle-nat}/MulleObjCStandardFoundation;;${MULLE_OBJC_STANDARD_FOUNDATION_BRANCH:-release}
