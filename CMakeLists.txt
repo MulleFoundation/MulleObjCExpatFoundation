@@ -42,11 +42,25 @@ ${PUBLIC_HEADERS}
 
 add_dependencies( MulleObjCExpatFoundationStandalone MulleObjCExpatFoundation)
 
+
+set( TARGET_ALL_LOAD_LIBRARIES
+$<TARGET_FILE:MulleObjCExpatFoundation>
+${OBJC_DEPENDENCY_LIBRARIES}
+${C_DEPENDENCY_LIBRARIES}
+)
+
+if( FORCE_LOAD)
+   set( TMP)
+   foreach( library ${TARGET_ALL_LOAD_LIBRARIES})
+      list( APPEND TMP "${FORCE_LOAD} ${library}")
+   endforeach( library)
+   set( TARGET_ALL_LOAD_LIBRARIES ${TMP})
+endif()
+
+
 target_link_libraries( MulleObjCExpatFoundationStandalone
 ${BEGIN_ALL_LOAD}
-MulleObjCExpatFoundation
-${C_DEPENDENCY_LIBRARIES}
-${OBJC_DEPENDENCY_LIBRARIES}
+${TARGET_ALL_LOAD_LIBRARIES}
 ${END_ALL_LOAD}
 ${OS_SPECIFIC_LIBRARIES}
 )
