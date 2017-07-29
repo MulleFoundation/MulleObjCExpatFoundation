@@ -18,9 +18,9 @@ endif()
 set( CMAKE_FIND_ROOT_PATH ${DEPENDENCIES_DIR})
 message( STATUS "CMAKE_FIND_ROOT_PATH is ${CMAKE_FIND_ROOT_PATH}")
 
-
-include( CMakeSourcesAndHeaders.txt)
+set( MULLE_OBJC_EXPAT_FOUNDATION_LIBRARY ON)
 include( CMakeDependencies.txt)
+include( CMakeSourcesAndHeaders.txt)
 
 
 add_library( MulleObjCExpatFoundation STATIC
