@@ -6,5 +6,7 @@
 //  Copyright © 2016 Mulle kybernetiK. All rights reserved.
 //
 
-#import <MulleObjCStandardFoundation/MulleObjCFoundationSetup.h>
-#import <MulleObjCStandardFoundation/MulleObjCFoundationStandalone.inc>
+
+#include "MulleObjCExpatFoundation.h"
+
+int   __MulleObjCExpatFoundationStandaloneVersion__ = MULLE_OBJC_EXPAT_FOUNDATION_VERSION;

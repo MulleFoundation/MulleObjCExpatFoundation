@@ -7,6 +7,6 @@
 //
 #import <MulleObjCStandardFoundation/MulleObjCStandardFoundation.h>
 
-#define MULLE_OBJC_EXPAT_FOUNDATION_VERSION  MULLE_OBJC_FOUNDATION_VERSION
+#define MULLE_OBJC_EXPAT_FOUNDATION_VERSION  MULLE_OBJC_STANDARD_FOUNDATION_VERSION
 
 #import "MulleObjCLoader+MulleObjCExpatFoundation.h"

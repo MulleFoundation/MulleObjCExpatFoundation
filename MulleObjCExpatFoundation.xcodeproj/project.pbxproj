@@ -256,7 +256,7 @@
 				41FE549D1CDA5D8400EDC57F /* generate-dot.sh */,
 				41FE549E1CDA5D8400EDC57F /* update-all-configurations.sh */,
 			);
-			path = "mulle-configuration";
+			path = "mulle-configuration/xcode";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

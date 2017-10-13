@@ -1,5 +1,4 @@
-
-include_directories(
+set( INCLUDE_DIRS
 src
 )
 
@@ -16,3 +15,6 @@ src/NSPropertyListSerialization+Expat.m
 src/MulleObjCLoader+MulleObjCExpatFoundation.m
 )
 
+set( STANDALONE_SOURCES
+src/MulleObjCExpatFoundationStandalone.m
+)

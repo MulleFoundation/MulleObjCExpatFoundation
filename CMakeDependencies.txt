@@ -1,6 +1,8 @@
 if( NOT __MULLE_OBJC_EXPAT_FOUNDATION_CMAKE_DEPENDENCIES_TXT__)
    set( __MULLE_OBJC_EXPAT_FOUNDATION_CMAKE_DEPENDENCIES_TXT__ ON)
 
+   message( STATUS "# Include MulleObjCExpatFoundation CMakeDependencies.txt")
+
    include( ${DEPENDENCIES_DIR}/include/MulleObjCStandardFoundation/CMakeDependencies.txt)
 
    if( NOT EXPAT_LIBRARY)
@@ -50,5 +52,9 @@ if( NOT __MULLE_OBJC_EXPAT_FOUNDATION_CMAKE_DEPENDENCIES_TXT__)
          )
       endif()
    endif()
-   message( STATUS "# Included MulleObjCExpatFoundation CMakeDependencies.txt")
+
+   if( MSVC)
+      set( MULLE_OBJC_EXPAT_FOUNDATION_DEFINITIONS ${MULLE_OBJC_STANDARD_FOUNDATION_DEFINITIONS})
+   endif()
+
 endif()

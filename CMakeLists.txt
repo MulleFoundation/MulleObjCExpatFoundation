@@ -19,59 +19,12 @@ set( CMAKE_FIND_ROOT_PATH ${DEPENDENCIES_DIR})
 message( STATUS "CMAKE_FIND_ROOT_PATH is ${CMAKE_FIND_ROOT_PATH}")
 
 set( MULLE_OBJC_EXPAT_FOUNDATION_LIBRARY ON)
+
 include( CMakeDependencies.txt)
 include( CMakeSourcesAndHeaders.txt)
 
+include_directories( ${INCLUDE_DIRS})
 
-add_library( MulleObjCExpatFoundation STATIC
-${SOURCES}
-${PUBLIC_HEADERS}
-${PRIVATE_HEADERS}
-CMakeDependencies.txt
-CMakeSourcesAndHeaders.txt
-)
-
-target_link_libraries( MulleObjCExpatFoundation
-)
-
-
-add_library( MulleObjCExpatFoundationStandalone SHARED
-src/MulleObjCExpatFoundationStandalone.m
-${PUBLIC_HEADERS}
-)
-
-add_dependencies( MulleObjCExpatFoundationStandalone MulleObjCExpatFoundation)
-
-
-set( TARGET_ALL_LOAD_LIBRARIES
-$<TARGET_FILE:MulleObjCExpatFoundation>
-${OBJC_DEPENDENCY_LIBRARIES}
-${C_DEPENDENCY_LIBRARIES}
-)
-
-if( FORCE_LOAD)
-   set( TMP)
-   foreach( library ${TARGET_ALL_LOAD_LIBRARIES})
-      list( APPEND TMP "${FORCE_LOAD} ${library}")
-   endforeach( library)
-   set( TARGET_ALL_LOAD_LIBRARIES ${TMP})
-endif()
-
-
-target_link_libraries( MulleObjCExpatFoundationStandalone
-${BEGIN_ALL_LOAD}
-${TARGET_ALL_LOAD_LIBRARIES}
-${END_ALL_LOAD}
-${OS_SPECIFIC_LIBRARIES}
-)
-
-message( STATUS "OBJC_DEPENDENCY_NAMES is ${OBJC_DEPENDENCY_NAMES}")
-
-# runs in build dir
-add_custom_command( TARGET MulleObjCExpatFoundationStandalone
-   POST_BUILD
-   COMMAND ${DEPENDENCIES_DIR}/bin/mulle-objc-create-dependencies-inc -v -o ${CMAKE_SOURCE_DIR}/src/dependencies.inc MulleObjCExpatFoundation ${OBJC_DEPENDENCY_NAMES}
-)
 
 set( PUBLIC_HEADERS
 ${PUBLIC_HEADERS}
@@ -80,6 +33,37 @@ ${PUBLIC_HEADERS}
 )
 
 
+add_library( MulleObjCExpatFoundation STATIC
+${SOURCES}
+${PUBLIC_HEADERS}
+${PRIVATE_HEADERS}
+CMakeSourcesAndHeaders.txt
+)
+
+set( OBJC_LIBRARY_NAME "MulleObjCExpatFoundation")
+
+include( DependenciesIncObjC)
+
+
+#
+# produce a standalone dll/dylib/so for testing mainly
+# though testing could go static at some point in time
+# (shared is more frugal though)
+#
+set( STANDALONE_BASE_NAME "MulleObjCExpatFoundation")
+set( STANDALONE_NAME "MulleObjCExpatFoundationStandalone")
+set( STANDALONE_DEFINITIONS ${MULLE_OBJC_EXPAT_FOUNDATION_DEFINITIONS})
+set( STANDALONE_ALL_LOAD_LIBRARIES
+    $<TARGET_FILE:${STANDALONE_BASE_NAME}>
+    ${OBJC_DEPENDENCY_LIBRARIES}
+    ${OBJC_STARTUP_LIBRARY}
+    ${C_DEPENDENCY_LIBRARIES}
+)
+
+include( Standalone)
+
 install( TARGETS MulleObjCExpatFoundation MulleObjCExpatFoundationStandalone DESTINATION "lib")
 install( FILES ${PUBLIC_HEADERS} DESTINATION "include/MulleObjCExpatFoundation")
 install( FILES ${PRIVATE_HEADERS} DESTINATION "include/MulleObjCExpatFoundation/private")
+
+include( MulleTest)
