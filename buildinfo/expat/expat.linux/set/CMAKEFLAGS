@@ -1,0 +1,1 @@
+-DBUILD_doc=OFF -DBUILD_tools=OFF -DBUILD_examples=OFF -DBUILD_shared=OFF

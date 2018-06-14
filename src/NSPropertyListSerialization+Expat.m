@@ -11,14 +11,13 @@
  *  $Id$
  *
  */
-#import <MulleObjCStandardFoundation/MulleObjCStandardFoundation.h>
+#import "import-private.h"
 
 // other files in this library
 
 // other libraries of MulleObjCStandardFoundation
 
 // std-c and dependencies
-#include <expat/expat.h>
 #include <ctype.h>
 
 #ifndef DEBUG
@@ -200,7 +199,7 @@ static void    char_data_handler( void *_self, XML_Char *s, int len)
 }
 
 
-- (NSDateFormatter *) dateFormatter
+- (NSDateFormatter *) _dateFormatter
 {
    // ephemeral, only valid during one run
    if( ! _dateFormatter)
@@ -262,7 +261,7 @@ static void    end_elem_handler( void *_self, const XML_Char *name)
       if( key == _DateKey)
       {
          NSCParameterAssert( match == _DateKey);
-         obj = [[[self dateFormatter] dateFromString:text] retain];
+         obj = [[[self _dateFormatter] dateFromString:text] retain];
          break;
       }
 
