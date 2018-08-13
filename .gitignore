@@ -45,3 +45,4 @@ tmp.*/
 
 test/
 compile-libexpat.txt
+.mulle-env/etc/environment-host-*.sh
