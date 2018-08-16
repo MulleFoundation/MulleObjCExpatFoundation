@@ -1,3 +1,7 @@
+### 0.13.4
+
+* modernized mulle-sde cmake
+
 ### 0.13.3
 
 * fix for mingw
