@@ -7,11 +7,11 @@
 //
 #import "import.h"
 
-#define MULLE_OBJC_EXPAT_FOUNDATION_VERSION  ((0 << 20) | (13 << 8) | 4)
+#define MULLE_OBJC_EXPAT_FOUNDATION_VERSION  ((0 << 20) | (14 << 8) | 0)
 
 #import "MulleObjCLoader+MulleObjCExpatFoundation.h"
 
 // export nothing with _MulleObjC
-#if MULLE_OBJC_STANDARD_FOUNDATION_VERSION < ((0 << 20) | (13 << 8) | 0)
+#if MULLE_OBJC_STANDARD_FOUNDATION_VERSION < ((0 << 20) | (14 << 8) | 0)
 # error "MulleObjCStandardFoundation is too old"
 #endif

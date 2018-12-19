@@ -64,10 +64,12 @@ int   main( int argc, const char * argv[])
                                             mutabilityOption:NSPropertyListImmutable
                                                       format:NULL
                                             errorDescription:&error];
+#if 0
    if( ! plist)
       fprintf( stderr, "Error: %s", [error UTF8String]);
    else
       fprintf( stderr, "Error: %s", [[plist description] UTF8String]);
+#endif
 
    return( 0);
 }

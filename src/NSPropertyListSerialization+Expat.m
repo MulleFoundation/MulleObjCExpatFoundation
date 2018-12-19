@@ -78,10 +78,10 @@ static void   pushKeyObj( NSPropertyListSerialization *self,
 
 static NSString  *peekKey( NSPropertyListSerialization *self)
 {
-   struct mulle_pointerpair   *pair;
+   struct mulle_pointerpair   pair;
 
    pair = mulle_pointerpairarray_find_last( &self->_stack);
-   return( pair ? pair->_key : pair);
+   return( pair._value);
 }
 
 
@@ -105,7 +105,7 @@ static void   emptyObjects( NSPropertyListSerialization *self)
    id   value;
 
    while( popKeyObj( self, &value))
-      [value release];
+      [value autorelease];
 }
 
 
@@ -446,12 +446,11 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
 
    NSParameterAssert( [data length]); // should have been checked already
 
-   inv_rval = 0;
    pool = [NSAutoreleasePool new];
    {
       NSCParameterAssert( ! self->_textStorage);
 
-      parser = XML_ParserCreate( NULL);
+      parser    = XML_ParserCreate( NULL);
       allocator = MulleObjCObjectGetAllocator( self);
 
       mulle_pointerpairarray_init( &self->_stack, 128, NULL, allocator);
@@ -472,7 +471,7 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
       {
          if( ! xml_len)
             MulleObjCThrowInvalidArgumentException( @"no XML text");
-         if( xml_s[ xml_len  - 1])
+         if( xml_s[ xml_len - 1])
             break;
 
          // remove trailing zeroes
@@ -480,13 +479,11 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
       }
 
       inv_rval = XML_Parse( parser, xml_s, (int) xml_len, YES);
-
       if( inv_rval)
       {
          NSCParameterAssert( mulle_pointerpairarray_get_count( &self->_stack) == 1);
          key = popKeyObj( self, &plist);
          NSParameterAssert( key == _PlistKey);
-         [plist autorelease];
       }
       else
          print_xml_error( parser, xml_s, xml_len);
@@ -501,14 +498,10 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
       mulle_pointerpairarray_done( &self->_stack);
       _textStorage = 0;
       [exception raise];
-
-      [plist retain];
    }
    [pool release];
 
-   [plist autorelease];
-
-   return( inv_rval ? plist : nil);
+   return( [plist autorelease]);
 }
 
 
@@ -517,16 +510,20 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
    struct mulle_pointerpairarray_enumerator   pair_rover;
    NSString                                   *separator;
    NSMutableString                            *s;
-   struct mulle_pointerpair                   *pair;
+   struct mulle_pointerpair                   pair;
 
    s = [NSMutableString string];
    [s appendString:@"<"];
 
-   separator = @" ";
+   separator  = @" ";
    pair_rover = mulle_pointerpairarray_enumerate( &self->_stack);
-   while( pair = mulle_pointerpairarray_enumerator_next( &pair_rover))
+   for(;;)
    {
-      [s appendFormat:@"%@{ %@ = %@ }", separator, pair->_key, pair->_value];
+      pair = mulle_pointerpairarray_enumerator_next( &pair_rover);
+      if( ! pair._value)
+         break;
+
+      [s appendFormat:@"%@{ %@ = %@ }", separator, pair._key, pair._value];
       separator = @", ";
    }
    mulle_pointerpairarray_enumerator_done( &pair_rover);
