@@ -7,7 +7,7 @@ endif()
 
 set( INCLUDE_DIRS
 src
-) 
+)
 
 set( PRIVATE_HEADERS
 src/import-private.h
@@ -19,5 +19,5 @@ src/MulleObjCExpatFoundation.h
 src/MulleObjCLoader+MulleObjCExpatFoundation.h
 src/import.h
 src/include.h
-) 
+)
 

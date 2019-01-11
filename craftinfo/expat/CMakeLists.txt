@@ -2,10 +2,10 @@ cmake_minimum_required( VERSION 3.0)
 
 project( expat NONE)
 
-file( GLOB BUILDINFO_DIRS
-   mulle-make*
+file( GLOB DEFINITION_DIRS
+   definition*
 )
 
-foreach( DIR ${BUILDINFO_DIRS} )
+foreach( DIR ${DEFINITION_DIRS} )
    install( DIRECTORY "${DIR}" DESTINATION "share/mulle-craft/expat")
 endforeach()
