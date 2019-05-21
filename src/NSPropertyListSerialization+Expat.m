@@ -191,8 +191,8 @@ static void    char_data_handler( void *_self, XML_Char *s, int len)
 #if XML_DEBUG
    fprintf( stderr, "%.*s\n", len, s);
 #endif
-   text = [[NSString alloc] _initWithUTF8Characters:(void *) s
-                                             length:len];
+   text = [[NSString alloc] mulleInitWithUTF8Characters:(void *) s
+                                                length:len];
 
    [self->_textStorage appendString:text];
    [text release];
@@ -505,7 +505,7 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
 }
 
 
-- (NSString *) _debugContentsDescription
+- (NSString *) mulleDebugContentsDescription
 {
    struct mulle_pointerpairarray_enumerator   pair_rover;
    NSString                                   *separator;

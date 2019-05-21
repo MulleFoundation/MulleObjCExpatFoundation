@@ -58,16 +58,16 @@ static char   test_xml[] = "\
 int   main( int argc, const char * argv[])
 {
    NSData    *data;
-   NSString  *error;
+   NSError   *error;
    id        plist;
 
    error = nil;
    data  = [NSData dataWithBytes:test_xml
                           length:sizeof( test_xml)];
-   plist = [NSPropertyListSerialization propertyListFromData:data
-                                            mutabilityOption:NSPropertyListImmutable
+   plist = [NSPropertyListSerialization propertyListWithData:data
+                                                     options:NSPropertyListImmutable
                                                       format:NULL
-                                            errorDescription:&error];
+                                                       error:&error];
    if( ! plist)
    {
       fprintf( stderr, "Error: %s\n", [[error description] UTF8String]);

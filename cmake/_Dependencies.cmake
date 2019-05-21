@@ -7,7 +7,7 @@ endif()
 
 # sourcetree: MULLE_OBJC_STANDARD_FOUNDATION;no-singlephase;
 if( NOT MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY)
-   find_library( MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCStandardFoundation${CMAKE_STATIC_LIBRARY_SUFFIX} MulleObjCStandardFoundation)
+   find_library( MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCStandardFoundation${CMAKE_STATIC_LIBRARY_SUFFIX} MulleObjCStandardFoundation NO_CMAKE_SYSTEM_PATH)
    message( STATUS "MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY is ${MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY}")
    #
    # the order looks ascending, but due to the way this file is read
@@ -88,7 +88,7 @@ endif()
 
 # sourcetree: EXPAT;no-all-load,no-import;
 if( NOT EXPAT_LIBRARY)
-   find_library( EXPAT_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}expat${CMAKE_STATIC_LIBRARY_SUFFIX} expat)
+   find_library( EXPAT_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}expat${CMAKE_STATIC_LIBRARY_SUFFIX} expat NO_CMAKE_SYSTEM_PATH)
    message( STATUS "EXPAT_LIBRARY is ${EXPAT_LIBRARY}")
    #
    # the order looks ascending, but due to the way this file is read
