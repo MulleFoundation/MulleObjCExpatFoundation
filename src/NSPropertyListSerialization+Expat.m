@@ -379,19 +379,21 @@ static void  paint_arrow( char *buf, int column)
 }
 
 
-//
-// TODO: make it an NSError
-//
-static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
+static NSString *
+   xml_error_description( XML_Parser parser, char *xml_s, size_t xml_len)
 {
-   XML_Size         line;
-   XML_Size         column;
-   XML_Index        index;
-   enum XML_Error   code;
-   XML_LChar        *error;
-   char             *s;
-   int              maxlength;
-   char             c_buf[ 6];
+   char                  *c_string;
+   char                  *s;
+   char                  c_buf[ 6];
+   enum XML_Error        code;
+   int                   maxlength;
+   NSString              *description;
+   size_t                c_len;
+   struct mulle_buffer   buffer;
+   XML_Index             index;
+   XML_LChar             *error;
+   XML_Size              column;
+   XML_Size              line;
 
    line   = XML_GetCurrentLineNumber( parser);
    column = XML_GetCurrentColumnNumber( parser);
@@ -416,33 +418,43 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
    if( maxlength > 256)
       maxlength = 256;
 
-   fprintf( stderr, "XML line %ld, at '%s': %s", line, c_buf, error);
-   fprintf( stderr, "%.*s", maxlength, s);
+   mulle_buffer_init( &buffer, &mulle_default_allocator);
+   mulle_sprintf( &buffer, "XML line %ld, at '%s': %s", line, c_buf, error);
+   mulle_sprintf( &buffer, "%.*s", maxlength, s);
 
    // output marker if line is not too large
-   if( column > 256 - 3)
-      return;
-
+   if( column <= 256 - 3)
    {
       char   buf[ column + 5];
 
       paint_arrow( buf, (int) column);
-      fprintf( stderr, "%.*s", maxlength, buf);
+      mulle_sprintf( &buffer, "%.*s", maxlength, buf);
    }
+
+   mulle_buffer_add_byte( &buffer, 0);
+   c_len    = mulle_buffer_get_length( &buffer);
+   c_string = mulle_buffer_extract_all( &buffer);
+   mulle_buffer_done( &buffer);
+
+   description = [[[NSString alloc] mulleInitWithUTF8CharactersNoCopy:(void *) c_string
+                                                               length:c_len
+                                                            allocator:&mulle_default_allocator] autorelease];
+   return( description);
 }
 
 
 - (id) _parseXMLData:(NSData *) data
 {
-   NSAutoreleasePool        *pool;
-   NSException              *exception;
-   NSString                 *key;
-   XML_Parser               parser;
    char                     *xml_s;
    id                       plist;
    int                      inv_rval;
+   NSAutoreleasePool        *pool;
+   NSException              *exception;
+   NSString                 *key;
+   NSString                 *reason;
    size_t                   xml_len;
    struct mulle_allocator   *allocator;
+   XML_Parser               parser;
 
    NSParameterAssert( [data length]); // should have been checked already
 
@@ -486,7 +498,10 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
          NSParameterAssert( key == _PlistKey);
       }
       else
-         print_xml_error( parser, xml_s, xml_len);
+      {
+         reason = xml_error_description( parser, xml_s, xml_len);
+         MulleObjCThrowInvalidArgumentException( reason);
+      }
 
    NS_HANDLER
       exception = localException;
@@ -507,7 +522,7 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
 
 - (NSString *) mulleDebugContentsDescription
 {
-   struct mulle_pointerpairarray_enumerator   pair_rover;
+   struct mulle_pointerpairarrayenumerator   pair_rover;
    NSString                                   *separator;
    NSMutableString                            *s;
    struct mulle_pointerpair                   pair;
@@ -519,14 +534,14 @@ static void   print_xml_error( XML_Parser parser, char *xml_s, size_t xml_len)
    pair_rover = mulle_pointerpairarray_enumerate( &self->_stack);
    for(;;)
    {
-      pair = mulle_pointerpairarray_enumerator_next( &pair_rover);
+      pair = mulle_pointerpairarrayenumerator_next( &pair_rover);
       if( ! pair._value)
          break;
 
       [s appendFormat:@"%@{ %@ = %@ }", separator, pair._key, pair._value];
       separator = @", ";
    }
-   mulle_pointerpairarray_enumerator_done( &pair_rover);
+   mulle_pointerpairarrayenumerator_done( &pair_rover);
 
    [s appendString:@">"];
 

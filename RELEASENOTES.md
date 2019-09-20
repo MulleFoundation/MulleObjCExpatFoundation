@@ -1,3 +1,8 @@
+## 0.16.0
+
+* improved xml error reporting
+
+
 ## 0.15.0
 
 * Various small improvements
