@@ -8,6 +8,7 @@
 #ifndef _mulle_objc_expat_foundation_include_h__
 #define _mulle_objc_expat_foundation_include_h__
 
+// library: remove with `mark no-header`, rename with `set include`
 # include <expat.h>   // expat
 
 #endif
