@@ -11,23 +11,22 @@
  *  $Id$
  *
  */
-#import "import-private.h"
+#import "import.h"
 
 // other files in this library
-#import "MulleObjCExpatParser.h"
 
 // other libraries of MulleObjCStandardFoundation
 
 // std-c and dependencies
 
-@implementation NSPropertyListSerialization( MulleObjCExpatParser)
-
-+ (void) load
+@interface MulleObjCExpatParser : NSObject
 {
-   [self mulleAddParserClass:[MulleObjCExpatParser class]
-                      method:@selector( parseXMLData:)
-       forPropertyListFormat:NSPropertyListXMLFormat_v1_0];
+   // these are all ephemeral currently
+@private
+   struct mulle_pointerpairarray   _stack;          // useful for XML
+   id                              _textStorage;    // useful for XML
+   id                              _dateFormatter;  // ephemeral usage in XML
 }
-
 @end
+
 

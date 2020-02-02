@@ -7,6 +7,7 @@ endif()
 
 set( SOURCES
 src/MulleObjCExpatFoundation.m
+src/MulleObjCExpatParser.m
 src/NSPropertyListSerialization+Expat.m
 )
 

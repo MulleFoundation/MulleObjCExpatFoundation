@@ -16,6 +16,7 @@ src/include-private.h
 
 set( PUBLIC_HEADERS
 src/MulleObjCExpatFoundation.h
+src/MulleObjCExpatParser.h
 src/MulleObjCLoader+MulleObjCExpatFoundation.h
 src/import.h
 src/include.h
