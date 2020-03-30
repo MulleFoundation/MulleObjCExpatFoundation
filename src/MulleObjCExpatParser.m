@@ -492,7 +492,7 @@ static NSString *
       NSCParameterAssert( ! self->_textStorage);
 
       parser    = XML_ParserCreate( NULL);
-      allocator = MulleObjCObjectGetAllocator( self);
+      allocator = MulleObjCInstanceGetAllocator( self);
 
       mulle_pointerpairarray_init( &self->_stack, 128, NULL, allocator);
 

@@ -1,3 +1,8 @@
+## 0.17.0
+
+* moved parser into its own **MulleObjCExpatParser** class for the new `NSPropertyListSerialization` plugin interface
+
+
 ## 0.16.0
 
 * improved xml error reporting

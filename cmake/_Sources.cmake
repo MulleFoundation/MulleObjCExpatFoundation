@@ -7,14 +7,11 @@ endif()
 
 set( SOURCES
 src/MulleObjCExpatFoundation.m
+src/MulleObjCExpatFoundation-standalone.m
 src/MulleObjCExpatParser.m
 src/NSPropertyListSerialization+Expat.m
 )
 
 set( STAGE2_SOURCES
 src/MulleObjCLoader+MulleObjCExpatFoundation.m
-)
-
-set( STANDALONE_SOURCES
-src/MulleObjCExpatFoundation-standalone.m
 )

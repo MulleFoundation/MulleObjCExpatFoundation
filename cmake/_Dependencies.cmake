@@ -7,11 +7,79 @@ if( MULLE_TRACE_INCLUDE)
 endif()
 
 #
+# Generated from sourcetree: expat;no-all-load,no-import;
+# Disable with: `mulle-sourcetree mark expat no-link`
+#
+if( NOT EXPAT_LIBRARY)
+   find_library( EXPAT_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}expat${CMAKE_STATIC_LIBRARY_SUFFIX} expat NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
+   message( STATUS "EXPAT_LIBRARY is ${EXPAT_LIBRARY}")
+   #
+   # The order looks ascending, but due to the way this file is read
+   # it ends up being descending, which is what we need.
+   #
+   if( EXPAT_LIBRARY)
+      #
+      # Add EXPAT_LIBRARY to DEPENDENCY_LIBRARIES list.
+      # Disable with: `mulle-sourcetree mark expat no-cmakeadd`
+      #
+      set( DEPENDENCY_LIBRARIES
+         ${DEPENDENCY_LIBRARIES}
+         ${EXPAT_LIBRARY}
+         CACHE INTERNAL "need to cache this"
+      )
+      #
+      # Inherit ObjC loader and link dependency info.
+      # Disable with: `mulle-sourcetree mark expat no-cmakeinherit`
+      #
+      # // temporarily expand CMAKE_MODULE_PATH
+      get_filename_component( _TMP_EXPAT_ROOT "${EXPAT_LIBRARY}" DIRECTORY)
+      get_filename_component( _TMP_EXPAT_ROOT "${_TMP_EXPAT_ROOT}" DIRECTORY)
+      #
+      #
+      # Search for "DependenciesAndLibraries.cmake" to include.
+      # Disable with: `mulle-sourcetree mark expat no-cmakedependency`
+      #
+      foreach( _TMP_EXPAT_NAME "expat")
+         set( _TMP_EXPAT_DIR "${_TMP_EXPAT_ROOT}/include/${_TMP_EXPAT_NAME}/cmake")
+         # use explicit path to avoid "surprises"
+         if( EXISTS "${_TMP_EXPAT_DIR}/DependenciesAndLibraries.cmake")
+            unset( EXPAT_DEFINITIONS)
+            list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_EXPAT_DIR}")
+            # we only want top level INHERIT_OBJC_LOADERS, so disable them
+            if( NOT NO_INHERIT_OBJC_LOADERS)
+               set( NO_INHERIT_OBJC_LOADERS OFF)
+            endif()
+            list( APPEND _TMP_INHERIT_OBJC_LOADERS ${NO_INHERIT_OBJC_LOADERS})
+            set( NO_INHERIT_OBJC_LOADERS ON)
+            #
+            include( "${_TMP_EXPAT_DIR}/DependenciesAndLibraries.cmake")
+            #
+            list( GET _TMP_INHERIT_OBJC_LOADERS -1 NO_INHERIT_OBJC_LOADERS)
+            list( REMOVE_AT _TMP_INHERIT_OBJC_LOADERS -1)
+            #
+            list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_EXPAT_DIR}")
+            set( INHERITED_DEFINITIONS
+               ${INHERITED_DEFINITIONS}
+               ${EXPAT_DEFINITIONS}
+               CACHE INTERNAL "need to cache this"
+            )
+            break()
+         else()
+            message( STATUS "${_TMP_EXPAT_DIR}/DependenciesAndLibraries.cmake not found")
+         endif()
+      endforeach()
+   else()
+      message( FATAL_ERROR "EXPAT_LIBRARY was not found")
+   endif()
+endif()
+
+
+#
 # Generated from sourcetree: MulleObjCStandardFoundation;no-singlephase;
 # Disable with: `mulle-sourcetree mark MulleObjCStandardFoundation no-link`
 #
 if( NOT MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY)
-   find_library( MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCStandardFoundation${CMAKE_STATIC_LIBRARY_SUFFIX} MulleObjCStandardFoundation NO_CMAKE_SYSTEM_PATH)
+   find_library( MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCStandardFoundation${CMAKE_STATIC_LIBRARY_SUFFIX} MulleObjCStandardFoundation NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
    message( STATUS "MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY is ${MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY}")
    #
    # The order looks ascending, but due to the way this file is read
@@ -19,7 +87,7 @@ if( NOT MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY)
    #
    if( MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY)
       #
-      # Add to MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY list.
+      # Add MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY to ALL_LOAD_DEPENDENCY_LIBRARIES list.
       # Disable with: `mulle-sourcetree mark MulleObjCStandardFoundation no-cmakeadd`
       #
       set( ALL_LOAD_DEPENDENCY_LIBRARIES
@@ -87,73 +155,5 @@ if( NOT MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY)
       endif()
    else()
       message( FATAL_ERROR "MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY was not found")
-   endif()
-endif()
-
-
-#
-# Generated from sourcetree: expat;no-all-load,no-import;
-# Disable with: `mulle-sourcetree mark expat no-link`
-#
-if( NOT EXPAT_LIBRARY)
-   find_library( EXPAT_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}expat${CMAKE_STATIC_LIBRARY_SUFFIX} expat NO_CMAKE_SYSTEM_PATH)
-   message( STATUS "EXPAT_LIBRARY is ${EXPAT_LIBRARY}")
-   #
-   # The order looks ascending, but due to the way this file is read
-   # it ends up being descending, which is what we need.
-   #
-   if( EXPAT_LIBRARY)
-      #
-      # Add to EXPAT_LIBRARY list.
-      # Disable with: `mulle-sourcetree mark expat no-cmakeadd`
-      #
-      set( DEPENDENCY_LIBRARIES
-         ${DEPENDENCY_LIBRARIES}
-         ${EXPAT_LIBRARY}
-         CACHE INTERNAL "need to cache this"
-      )
-      #
-      # Inherit ObjC loader and link dependency info.
-      # Disable with: `mulle-sourcetree mark expat no-cmakeinherit`
-      #
-      # // temporarily expand CMAKE_MODULE_PATH
-      get_filename_component( _TMP_EXPAT_ROOT "${EXPAT_LIBRARY}" DIRECTORY)
-      get_filename_component( _TMP_EXPAT_ROOT "${_TMP_EXPAT_ROOT}" DIRECTORY)
-      #
-      #
-      # Search for "DependenciesAndLibraries.cmake" to include.
-      # Disable with: `mulle-sourcetree mark expat no-cmakedependency`
-      #
-      foreach( _TMP_EXPAT_NAME "expat")
-         set( _TMP_EXPAT_DIR "${_TMP_EXPAT_ROOT}/include/${_TMP_EXPAT_NAME}/cmake")
-         # use explicit path to avoid "surprises"
-         if( EXISTS "${_TMP_EXPAT_DIR}/DependenciesAndLibraries.cmake")
-            unset( EXPAT_DEFINITIONS)
-            list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_EXPAT_DIR}")
-            # we only want top level INHERIT_OBJC_LOADERS, so disable them
-            if( NOT NO_INHERIT_OBJC_LOADERS)
-               set( NO_INHERIT_OBJC_LOADERS OFF)
-            endif()
-            list( APPEND _TMP_INHERIT_OBJC_LOADERS ${NO_INHERIT_OBJC_LOADERS})
-            set( NO_INHERIT_OBJC_LOADERS ON)
-            #
-            include( "${_TMP_EXPAT_DIR}/DependenciesAndLibraries.cmake")
-            #
-            list( GET _TMP_INHERIT_OBJC_LOADERS -1 NO_INHERIT_OBJC_LOADERS)
-            list( REMOVE_AT _TMP_INHERIT_OBJC_LOADERS -1)
-            #
-            list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_EXPAT_DIR}")
-            set( INHERITED_DEFINITIONS
-               ${INHERITED_DEFINITIONS}
-               ${EXPAT_DEFINITIONS}
-               CACHE INTERNAL "need to cache this"
-            )
-            break()
-         else()
-            message( STATUS "${_TMP_EXPAT_DIR}/DependenciesAndLibraries.cmake not found")
-         endif()
-      endforeach()
-   else()
-      message( FATAL_ERROR "EXPAT_LIBRARY was not found")
    endif()
 endif()
