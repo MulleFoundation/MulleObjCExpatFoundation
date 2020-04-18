@@ -1,3 +1,7 @@
+### 0.17.1
+
+* new mulle-sde project structure
+
 ## 0.17.0
 
 * moved parser into its own **MulleObjCExpatParser** class for the new `NSPropertyListSerialization` plugin interface
