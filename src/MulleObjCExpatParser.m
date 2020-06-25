@@ -220,7 +220,7 @@ static void    char_data_handler( void *_self, XML_Char *s, int len)
    fprintf( stderr, "%.*s\n", len, s);
 #endif
    text = [[NSString alloc] mulleInitWithUTF8Characters:(void *) s
-                                                length:len];
+                                                 length:len];
 
    [self->_textStorage appendString:text];
    [text release];
@@ -496,7 +496,7 @@ static NSString *
 
       mulle_pointerpairarray_init( &self->_stack, 128, NULL, allocator);
 
-      _textStorage = [NSMutableString string];
+      _textStorage = [NSMutableString object];
       exception    = nil;
       plist        = nil;
 
@@ -559,7 +559,7 @@ static NSString *
    NSMutableString                           *s;
    struct mulle_pointerpair                  pair;
 
-   s = [NSMutableString string];
+   s = [NSMutableString object];
    [s appendString:@"<"];
 
    separator  = @" ";
