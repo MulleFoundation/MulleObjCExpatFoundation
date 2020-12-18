@@ -13,12 +13,17 @@
 #define _MulleObjCExpatFoundation_include_h__
 
 // How to tweak the following expat #include
-//    remove:          `mulle-sourcetree mark expat no-header`
-//    rename:          `mulle-sourcetree mark expat set include whatever.h`
-//    toggle #import:  `mulle-sourcetree mark expat [no-]import`
-//    toggle public:   `mulle-sourcetree mark expat [no-]public`
-//    toggle optional: `mulle-sourcetree mark expat [no-]require`
-//    remove for os:   `mulle-sourcetree mark expat no-os-<osname>`
-# include <expat.h>   // expat
+//    remove:             `mulle-sourcetree mark expat no-header`
+//    rename:             `mulle-sde dependency|library set expat include whatever.h`
+//    toggle #import:     `mulle-sourcetree mark expat [no-]import`
+//    toggle localheader: `mulle-sourcetree mark expat [no-]localheader`
+//    toggle public:      `mulle-sourcetree mark expat [no-]public`
+//    toggle optional:    `mulle-sourcetree mark expat [no-]require`
+//    remove for os:      `mulle-sourcetree mark expat no-os-<osname>`
+# if defined( __has_include) && __has_include("expat.h")
+#   include "expat.h"   // expat
+# else
+#   include <expat.h>   // expat
+# endif
 
 #endif

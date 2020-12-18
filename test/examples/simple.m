@@ -38,6 +38,9 @@ int   main( int argc, const char * argv[])
    NSError   *error;
    id        plist;
 
+   if( argc == 2)
+     return( 1);
+
    error = nil;
    data  = [NSData dataWithBytes:test_xml
                           length:sizeof( test_xml)];

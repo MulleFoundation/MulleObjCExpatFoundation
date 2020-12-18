@@ -69,9 +69,9 @@ static void   pushKeyObj( MulleObjCExpatParser *self,
 {
    struct mulle_pointerpair   pair;
 
-   pair._key   = key;
-   pair._value = value;
-   mulle_pointerpairarray_add( &self->_stack, pair);
+   pair.key   = key;
+   pair.value = value;
+   _mulle_pointerpairarray_add( &self->_stack, pair);
 #if STACK_DEBUG
    fprintf( stderr, "+key : %s %s\n", [key UTF8String], [[value description] UTF8String]);
 #endif
@@ -82,8 +82,8 @@ static NSString  *peekKey( MulleObjCExpatParser *self)
 {
    struct mulle_pointerpair   pair;
 
-   pair = mulle_pointerpairarray_find_last( &self->_stack);
-   return( pair._value);
+   pair = mulle_pointerpairarray_get_last( &self->_stack);
+   return( pair.value);
 }
 
 
@@ -93,12 +93,12 @@ static void   *popKeyObj( MulleObjCExpatParser *self, id *value)
 
    pair = mulle_pointerpairarray_remove_last( &self->_stack);
    if( value)
-      *value = pair._value;
+      *value = pair.value;
 
 #if STACK_DEBUG
-   fprintf( stderr, "-key : %s %s\n", [(id) pair._key UTF8String], [[(id) pair._value description] UTF8String]);
+   fprintf( stderr, "-key : %s %s\n", [(id) pair.key UTF8String], [[(id) pair.value description] UTF8String]);
 #endif
-   return( pair._key);
+   return( pair.key == mulle_not_a_pointer ? NULL : pair.key);
 }
 
 
@@ -423,6 +423,7 @@ static NSString *
    XML_LChar             *error;
    XML_Size              column;
    XML_Size              line;
+   struct mulle_data     data;
 
    line   = XML_GetCurrentLineNumber( parser);
    column = XML_GetCurrentColumnNumber( parser);
@@ -447,7 +448,7 @@ static NSString *
    if( maxlength > 256)
       maxlength = 256;
 
-   mulle_buffer_init( &buffer, &mulle_default_allocator);
+   mulle_buffer_init_with_capacity( &buffer, 256, &mulle_default_allocator);
    mulle_sprintf( &buffer, "XML line %ld, at '%s': %s", line, c_buf, error);
    mulle_sprintf( &buffer, "%.*s", maxlength, s);
 
@@ -461,12 +462,11 @@ static NSString *
    }
 
    mulle_buffer_add_byte( &buffer, 0);
-   c_len    = mulle_buffer_get_length( &buffer);
-   c_string = mulle_buffer_extract_all( &buffer);
+   data = mulle_buffer_extract_data( &buffer);
    mulle_buffer_done( &buffer);
 
-   description = [[[NSString alloc] mulleInitWithUTF8CharactersNoCopy:(void *) c_string
-                                                               length:c_len
+   description = [[[NSString alloc] mulleInitWithUTF8CharactersNoCopy:data.bytes
+                                                               length:data.length
                                                             allocator:&mulle_default_allocator] autorelease];
    return( description);
 }
@@ -494,9 +494,8 @@ static NSString *
       parser    = XML_ParserCreate( NULL);
       allocator = MulleObjCInstanceGetAllocator( self);
 
-      mulle_pointerpairarray_init( &self->_stack, 128, NULL, allocator);
-
-      _textStorage = [NSMutableString object];
+      _mulle_pointerpairarray_init( &self->_stack, 128, allocator);
+      _textStorage = [NSMutableString string];
       exception    = nil;
       plist        = nil;
 
@@ -540,7 +539,7 @@ static NSString *
 
       emptyObjects( self);
 
-      mulle_pointerpairarray_done( &self->_stack);
+      _mulle_pointerpairarray_done( &self->_stack);
       _textStorage = 0;
       [exception raise];
    }
@@ -559,7 +558,7 @@ static NSString *
    NSMutableString                           *s;
    struct mulle_pointerpair                  pair;
 
-   s = [NSMutableString object];
+   s = [NSMutableString string];
    [s appendString:@"<"];
 
    separator  = @" ";
@@ -567,10 +566,10 @@ static NSString *
    for(;;)
    {
       pair = mulle_pointerpairarrayenumerator_next( &pair_rover);
-      if( ! pair._value)
+      if( ! pair.value)
          break;
 
-      [s appendFormat:@"%@{ %@ = %@ }", separator, pair._key, pair._value];
+      [s appendFormat:@"%@{ %@ = %@ }", separator, pair.key, pair.value];
       separator = @", ";
    }
    mulle_pointerpairarrayenumerator_done( &pair_rover);

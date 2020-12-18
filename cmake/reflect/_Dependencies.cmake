@@ -8,7 +8,7 @@ endif()
 
 #
 # Generated from sourcetree: expat;no-all-load,no-import;
-# Disable with: `mulle-sourcetree mark expat no-link`
+# Disable with: `mulle-sourcetree mark expat no-header`
 #
 if( NOT EXPAT_LIBRARY)
    find_library( EXPAT_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}expat${CMAKE_STATIC_LIBRARY_SUFFIX} expat NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -76,7 +76,7 @@ endif()
 
 #
 # Generated from sourcetree: MulleObjCStandardFoundation;no-singlephase;
-# Disable with: `mulle-sourcetree mark MulleObjCStandardFoundation no-link`
+# Disable with: `mulle-sourcetree mark MulleObjCStandardFoundation no-header`
 #
 if( NOT MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY)
    find_library( MULLE_OBJC_STANDARD_FOUNDATION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCStandardFoundation${CMAKE_STATIC_LIBRARY_SUFFIX} MulleObjCStandardFoundation NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)

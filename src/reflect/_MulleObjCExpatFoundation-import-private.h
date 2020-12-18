@@ -12,8 +12,12 @@
 #ifndef _MulleObjCExpatFoundation_import_private_h__
 #define _MulleObjCExpatFoundation_import_private_h__
 
-#include "_MulleObjCExpatFoundation-include-private.h"
-
 /* no headers */
+
+#ifdef __has_include
+# if __has_include( "_MulleObjCExpatFoundation-include.h")
+#  include "_MulleObjCExpatFoundation-include-private.h"
+# endif
+#endif
 
 #endif
