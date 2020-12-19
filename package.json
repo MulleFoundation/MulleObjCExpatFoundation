@@ -1,0 +1,17 @@
+{
+   "name" : "MulleObjCExpatFoundation",
+   "version" : "0.18.0",
+   "description" : "👴🏼 XML parser based on MulleObjCStandardFoundation and libexpat",
+   "homepage" : "https://github.com/MulleFoundation/MulleObjCExpatFoundation",
+   "bugs" : "https://github.com/MulleFoundation/MulleObjCExpatFoundation/issues",
+   "keywords" : [],
+   "license" : "UNLICENSED",
+   "repository" : {
+      "type" : "git",
+      "url" : "MulleFoundation/MulleObjCExpatFoundation"
+   },
+   "dependencies" : {
+      "expat" : "mulle-nat/libexpat",
+      "MulleObjCStandardFoundation" : "MulleFoundation/MulleObjCStandardFoundation"
+   }
+}
