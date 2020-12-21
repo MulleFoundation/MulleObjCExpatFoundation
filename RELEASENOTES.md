@@ -1,3 +1,8 @@
+## 0.18.0
+
+* update expat to `R_2_2_10.C`
+
+
 ### 0.17.2
 
 * remove duplicate objc-loader.inc
