@@ -7,11 +7,10 @@
 //
 #import "import.h"
 
-#define MULLE_OBJC_EXPAT_FOUNDATION_VERSION  ((0 << 20) | (18 << 8) | 0)
+#define MULLE_OBJC_EXPAT_FOUNDATION_VERSION  ((0 << 20) | (19 << 8) | 0)
 
-#import "MulleObjCLoader+MulleObjCExpatFoundation.h"
-
-#import "MulleObjCExpatParser.h"
+#import "_MulleObjCExpatFoundation-export.h"
+#import "_MulleObjCExpatFoundation-provide.h"
 
 // export nothing with _MulleObjC
 #if MULLE_OBJC_STANDARD_FOUNDATION_VERSION < ((0 << 20) | (14 << 8) | 0)

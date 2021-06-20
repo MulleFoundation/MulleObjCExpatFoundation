@@ -37,18 +37,18 @@ export PROJECT_EXTENSIONS="m:aam"
 #
 #
 #
-export PROJECT_IDENTIFIER="MulleObjCExpatFoundation"
 
-
-#
-#
-#
-export PROJECT_DOWNCASE_IDENTIFIER="mulle_objc_expat_foundation"
 
 
 #
 #
 #
-export PROJECT_UPCASE_IDENTIFIER="MULLE_OBJC_EXPAT_FOUNDATION"
+
+
+
+#
+#
+#
+
 
 

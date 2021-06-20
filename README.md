@@ -2,12 +2,29 @@
 
 #### 👴🏼 XML parser based on MulleObjCStandardFoundation and libexpat
 
-This adds XML capability for property lists. It uses the expat library.
+This adds XML capability for property lists via categories to **NSPropertyListSerialization**.
+It uses the expat library.
 
 
-Build Status | Release Version
--------------|-----------------------------------
-[![Build Status](https://travis-ci.org/MulleFoundation/MulleObjCExpatFoundation.svg?branch=release)](https://travis-ci.org/MulleFoundation/MulleObjCExpatFoundation) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/MulleObjCExpatFoundation.svg) [![Build Status](https://travis-ci.org/MulleFoundation/MulleObjCExpatFoundation.svg?branch=release)](https://travis-ci.org/MulleFoundation/MulleObjCExpatFoundation)
+
+### You are here
+
+
+```
+   .-------------------------------------------------------------------.
+   | Foundation                                                        |
+   '-------------------------------------------------------------------'
+   .---------..--------..------------------------..=========..---------.
+   | HTTP    || InetOS || MulleFoundation        || Expat   || JSMN    |
+   '---------''--------''------------------------''=========''---------'
+   .-------------..---------------------..-----------------------------.
+   | Inet        || OS                  || Plist                       |
+   '-------------''---------------------''-----------------------------'
+   .---------..--------------------------------------------------------.
+   | Lock    || Standard                                               |
+   '---------''--------------------------------------------------------'
+```
+
 
 
 ## Install

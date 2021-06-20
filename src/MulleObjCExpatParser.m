@@ -91,7 +91,7 @@ static void   *popKeyObj( MulleObjCExpatParser *self, id *value)
 {
    struct mulle_pointerpair   pair;
 
-   pair = mulle_pointerpairarray_remove_last( &self->_stack);
+   pair = mulle_pointerpairarray_pop( &self->_stack);
    if( value)
       *value = pair.value;
 
