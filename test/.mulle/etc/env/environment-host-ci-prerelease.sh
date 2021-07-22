@@ -185,7 +185,7 @@ export MULLE_OBJC_PLIST_FOUNDATION_NODETYPE="git"
 
 
 #
-# MulleObjCPlistFoundation url: ${MULLE_OBJC_PLIST_FOUNDATION_URL:-https://github.com/MulleFoundation/MulleObjCPlistFoundation/archive/${MULLE_TAG.tar.gz}}
+# MulleObjCPlistFoundation url: ${MULLE_OBJC_PLIST_FOUNDATION_URL:-https://github.com/MulleFoundation/MulleObjCPlistFoundation/archive/${MULLE_TAG}.tar.gz}
 #
 export MULLE_OBJC_PLIST_FOUNDATION_URL="https://github.com/MulleFoundation/MulleObjCPlistFoundation.git"
 
