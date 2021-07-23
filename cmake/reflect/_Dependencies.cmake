@@ -15,7 +15,7 @@ endif()
 #
 # Generated from sourcetree: a2dcf4d0-48f2-4e74-8aef-13e42ef36b92;expat;no-all-load,no-import;
 # Disable with : `mulle-sourcetree mark expat no-link`
-# Disable for this platform: `mulle-sourcetree mark expat no-cmake-platform-linux`
+# Disable for this platform: `mulle-sourcetree mark expat no-cmake-platform-darwin`
 #
 if( NOT EXPAT_LIBRARY)
    find_library( EXPAT_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}expat${CMAKE_STATIC_LIBRARY_SUFFIX} expat NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -103,7 +103,7 @@ endif()
 #
 # Generated from sourcetree: 404EA57B-418F-4A2E-AF22-16970AFBBD03;MulleObjCPlistFoundation;no-singlephase;
 # Disable with : `mulle-sourcetree mark MulleObjCPlistFoundation no-link`
-# Disable for this platform: `mulle-sourcetree mark MulleObjCPlistFoundation no-cmake-platform-linux`
+# Disable for this platform: `mulle-sourcetree mark MulleObjCPlistFoundation no-cmake-platform-darwin`
 #
 if( NOT MULLE_OBJC_PLIST_FOUNDATION_LIBRARY)
    find_library( MULLE_OBJC_PLIST_FOUNDATION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCPlistFoundation${CMAKE_STATIC_LIBRARY_SUFFIX} MulleObjCPlistFoundation NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)

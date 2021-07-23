@@ -1,3 +1,8 @@
+## 0.19.0
+
+* Various small improvements
+
+
 ## 0.18.0
 
 * update expat to `R_2_2_10.C`
