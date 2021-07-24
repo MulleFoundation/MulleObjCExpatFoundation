@@ -1,6 +1,6 @@
 ## 0.19.0
 
-* Various small improvements
+* adapt to changes in mulle-container
 
 
 ## 0.18.0
