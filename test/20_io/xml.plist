@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>aDictionary</key>
+	<dict>
+		<key>2</key>
+		<string>0</string>
+		<key>1</key>
+		<integer>0</integer>
+	</dict>
+	<key>aString</key>
+	<string>HöHö</string>
+	<key>aNumber</key>
+	<real>182.822</real>
+	<key>aDate</key>
+	<date>2021-09-29T13:10:58Z</date>
+	<key>aData</key>
+	<data>AQIDBAUGBwgJCgsMDQ4PEA==</data>
+	<key>aBoolean</key>
+	<false/>
+   <key>anEmptyString</key>
+   <string/>
+	<key>anEmptyArray</key>
+	<array/>
+	<key>anEmptyDictionary</key>
+	<dict/>
+	<key>anArray</key>
+	<array>
+		<string>2</string>
+		<integer>2</integer>
+	</array>
+</dict>
+</plist>

@@ -124,7 +124,7 @@ static NSString  *_StringKey     = @"string";
 static NSString  *_TrueKey       = @"true";
 
 
-static NSString  *_keyForCString( char *s)
+static NSString  *_keyForUTF8String( char *s)
 {
    switch( *s++)
    {
@@ -194,7 +194,7 @@ static void   start_elem_handler( void *_self, XML_Char *name, XML_Char **attrib
 #endif
    self = (MulleObjCExpatParser *) _self;
 
-   key = _keyForCString( name);
+   key = _keyForUTF8String( name);
    pushKeyObj( self, key, nil);
 
    [self->_textStorage setString:nil]; // jettison trash
@@ -240,18 +240,18 @@ static void    char_data_handler( void *_self, XML_Char *s, int len)
 static void    end_elem_handler( void *_self, const XML_Char *name)
 {
    MulleObjCExpatParser   *self;
-   NSString                                  *key;
-   NSString                                  *match;
-   NSString                                  *text;
-   id                                        obj;
-   id                                        child;
-   NSData                                    *data;
+   NSString               *key;
+   NSString               *match;
+   NSString               *text;
+   id                     obj;
+   id                     child;
+   NSData                 *data;
 
 #if XML_DEBUG
    fprintf( stderr, "</%s>\n", name);
 #endif
    self = (MulleObjCExpatParser *) _self;
-   key  = _keyForCString( (char *) name);
+   key  = _keyForUTF8String( (char *) name);
    text = [self->_textStorage copy];
    [self->_textStorage setString:nil];
 
@@ -299,10 +299,11 @@ static void    end_elem_handler( void *_self, const XML_Char *name)
          NSCParameterAssert( match == _DataKey);
 
          data = [text dataUsingEncoding:NSUTF8StringEncoding];
-         obj  = [NSPropertyListSerialization propertyListFromData:data
-                                                 mutabilityOption:NSPropertyListImmutable
-                                                           format:NULL
-                                                 errorDescription:NULL];
+         obj  = [data base64DecodedData];
+//         obj  = [NSPropertyListSerialization propertyListFromData:data
+//                                                 mutabilityOption:NSPropertyListImmutable
+//                                                           format:NULL
+//                                                 errorDescription:NULL];
          [obj retain];
          break;
       }
@@ -449,8 +450,8 @@ static NSString *
       maxlength = 256;
 
    mulle_buffer_init_with_capacity( &buffer, 256, &mulle_default_allocator);
-   mulle_sprintf( &buffer, "XML line %ld, at '%s': %s", line, c_buf, error);
-   mulle_sprintf( &buffer, "%.*s", maxlength, s);
+   mulle_buffer_sprintf( &buffer, "XML line %ld, at '%s': %s", line, c_buf, error);
+   mulle_buffer_sprintf( &buffer, "%.*s", maxlength, s);
 
    // output marker if line is not too large
    if( column <= 256 - 3)
@@ -458,7 +459,7 @@ static NSString *
       char   buf[ column + 5];
 
       paint_arrow( buf, (int) column);
-      mulle_sprintf( &buffer, "%.*s", maxlength, buf);
+      mulle_buffer_sprintf( &buffer, "%.*s", maxlength, buf);
    }
 
    mulle_buffer_add_byte( &buffer, 0);

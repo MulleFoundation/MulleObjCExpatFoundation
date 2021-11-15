@@ -27,6 +27,9 @@
    [self mulleAddParserClass:[MulleObjCExpatParser class]
                       method:@selector( parseXMLData:)
        forPropertyListFormat:NSPropertyListXMLFormat_v1_0];
+
+   [self mulleAddPrintMethod:@selector( mullePrintXMLToStream:)
+         forPropertyListFormat:NSPropertyListXMLFormat_v1_0];
 }
 
 @end
