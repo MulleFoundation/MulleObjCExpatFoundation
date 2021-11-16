@@ -14,7 +14,7 @@ endif()
 #
 # Generated from sourcetree: a2dcf4d0-48f2-4e74-8aef-13e42ef36b92;expat;no-all-load,no-import;
 # Disable with : `mulle-sourcetree mark expat no-link`
-# Disable for this platform: `mulle-sourcetree mark expat no-cmake-platform-linux`
+# Disable for this platform: `mulle-sourcetree mark expat no-cmake-platform-${MULLE_UNAME}`
 #
 if( NOT EXPAT_LIBRARY)
    find_library( EXPAT_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}expat${CMAKE_STATIC_LIBRARY_SUFFIX} expat NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -85,7 +85,7 @@ endif()
 #
 # Generated from sourcetree: 404EA57B-418F-4A2E-AF22-16970AFBBD03;MulleObjCPlistFoundation;no-singlephase;
 # Disable with : `mulle-sourcetree mark MulleObjCPlistFoundation no-link`
-# Disable for this platform: `mulle-sourcetree mark MulleObjCPlistFoundation no-cmake-platform-linux`
+# Disable for this platform: `mulle-sourcetree mark MulleObjCPlistFoundation no-cmake-platform-${MULLE_UNAME}`
 #
 if( NOT MULLE_OBJC_PLIST_FOUNDATION_LIBRARY)
    find_library( MULLE_OBJC_PLIST_FOUNDATION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCPlistFoundation${CMAKE_STATIC_LIBRARY_SUFFIX} MulleObjCPlistFoundation NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -165,7 +165,7 @@ endif()
 #
 # Generated from sourcetree: 06CB6048-6DD4-42CF-ADA6-0A73CABDDD39;MulleBase64;;
 # Disable with : `mulle-sourcetree mark MulleBase64 no-link`
-# Disable for this platform: `mulle-sourcetree mark MulleBase64 no-cmake-platform-linux`
+# Disable for this platform: `mulle-sourcetree mark MulleBase64 no-cmake-platform-${MULLE_UNAME}`
 #
 if( NOT MULLE_BASE64_LIBRARY)
    find_library( MULLE_BASE64_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleBase64${CMAKE_STATIC_LIBRARY_SUFFIX} MulleBase64 NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -245,7 +245,7 @@ endif()
 #
 # Generated from sourcetree: 8649B13A-A8E7-4E52-8E23-EBB3EFBFADF1;MulleFoundation;;
 # Disable with : `mulle-sourcetree mark MulleFoundation no-link`
-# Disable for this platform: `mulle-sourcetree mark MulleFoundation no-cmake-platform-linux`
+# Disable for this platform: `mulle-sourcetree mark MulleFoundation no-cmake-platform-${MULLE_UNAME}`
 #
 if( NOT MULLE_FOUNDATION_LIBRARY)
    find_library( MULLE_FOUNDATION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleFoundation${CMAKE_STATIC_LIBRARY_SUFFIX} MulleFoundation NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)

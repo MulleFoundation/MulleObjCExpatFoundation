@@ -1,6 +1,8 @@
 cmake_minimum_required( VERSION 3.1)
 
 project( MulleObjCExpatFoundation C)
+add_definitions( -DMULLE_OBJC_EXPAT_FOUNDATION_EXTERN_GLOBAL=extern)
+
 
 
 ### mulle-sde environment
