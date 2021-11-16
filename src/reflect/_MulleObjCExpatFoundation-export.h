@@ -11,3 +11,4 @@
  */
 #import "MulleObjCExpatParser.h"
 #import "MulleObjCLoader+MulleObjCExpatFoundation.h"
+#import "MulleObjCPropertyListPrinting+XML.h"
