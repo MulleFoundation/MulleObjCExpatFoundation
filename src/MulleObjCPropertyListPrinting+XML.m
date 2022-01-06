@@ -175,7 +175,7 @@ mulle_utf8_t   *MulleXMLEscapeUTF8Character( mulle_utf8_t c, mulle_utf8_t buf[ 6
    case '&'  : *s++ = '&'; *s++ = 'a'; *s++ = 'm'; *s++ = 'p'; *s++ = ';'; break;
    case '\'' : *s++ = '&'; *s++ = 'a'; *s++ = 'p'; *s++ = 'o'; *s++ = 's'; *s++ = ';';  break;
    case '\"' : *s++ = '&'; *s++ = 'q'; *s++ = 'u'; *s++ = 'o'; *s++ = 't'; *s++ = ';'; break;
-#if ESCAPED_ZERO_IN_UTF8_STRING_IS_A_GOOD_THING
+#ifdef ESCAPED_ZERO_IN_UTF8_STRING_IS_A_GOOD_THING
    case 0    : *s++ = '&'; *s++ = '&'; *s++ = '#'; *s++ = '0'; *s++ = ';'; break;
 #endif
    default   :
