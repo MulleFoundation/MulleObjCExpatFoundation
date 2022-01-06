@@ -176,7 +176,8 @@ static NSString  *_keyForUTF8String( char *s)
       if( ! strcmp( s, "rue"))
          return( _TrueKey);
       break;
-   }
+   }- (id) parseXMLData:(NSData *) data
+
    MulleObjCThrowInvalidArgumentException( @"unknown key");
 }
 

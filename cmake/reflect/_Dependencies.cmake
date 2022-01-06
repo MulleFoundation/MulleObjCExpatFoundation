@@ -163,7 +163,7 @@ endif()
 
 
 #
-# Generated from sourcetree: 06CB6048-6DD4-42CF-ADA6-0A73CABDDD39;MulleBase64;;
+# Generated from sourcetree: 06CB6048-6DD4-42CF-ADA6-0A73CABDDD39;MulleBase64;no-singlephase;
 # Disable with : `mulle-sourcetree mark MulleBase64 no-link`
 # Disable for this platform: `mulle-sourcetree mark MulleBase64 no-cmake-platform-${MULLE_UNAME}`
 #
@@ -243,7 +243,7 @@ endif()
 
 
 #
-# Generated from sourcetree: 8649B13A-A8E7-4E52-8E23-EBB3EFBFADF1;MulleFoundation;;
+# Generated from sourcetree: 8649B13A-A8E7-4E52-8E23-EBB3EFBFADF1;MulleFoundation;no-singlephase;
 # Disable with : `mulle-sourcetree mark MulleFoundation no-link`
 # Disable for this platform: `mulle-sourcetree mark MulleFoundation no-cmake-platform-${MULLE_UNAME}`
 #
