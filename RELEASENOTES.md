@@ -1,6 +1,6 @@
 ## 0.20.0
 
-* Various small improvements
+* received XML printing from NSPropertyList
 
 
 ## 0.19.0
