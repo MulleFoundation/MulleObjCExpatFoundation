@@ -1,3 +1,7 @@
+### 0.20.1
+
+* fix missing +dependencies for NSPropertyListSerialization( MulleObjCExpatParser)
+
 ## 0.20.0
 
 * received XML printing from NSPropertyList

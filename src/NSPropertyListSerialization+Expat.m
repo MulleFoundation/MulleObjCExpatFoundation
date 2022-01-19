@@ -22,6 +22,8 @@
 
 @implementation NSPropertyListSerialization( MulleObjCExpatParser)
 
+MULLE_OBJC_DEPENDS_ON_CLASS( MulleObjCExpatParser);
+
 + (void) load
 {
    [self mulleAddParserClass:[MulleObjCExpatParser class]

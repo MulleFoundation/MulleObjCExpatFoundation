@@ -7,7 +7,7 @@
 //
 #import "import.h"
 
-#define MULLE_OBJC_EXPAT_FOUNDATION_VERSION  ((0 << 20) | (20 << 8) | 0)
+#define MULLE_OBJC_EXPAT_FOUNDATION_VERSION  ((0 << 20) | (20 << 8) | 1)
 
 #import "_MulleObjCExpatFoundation-export.h"
 #import "_MulleObjCExpatFoundation-provide.h"
