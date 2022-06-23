@@ -1,3 +1,7 @@
+### 0.20.2
+
+* re-enable built of expat as static library
+
 ### 0.20.1
 
 * fix missing +dependencies for NSPropertyListSerialization( MulleObjCExpatParser)
