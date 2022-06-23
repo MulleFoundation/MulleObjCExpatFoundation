@@ -1,0 +1,13 @@
+#
+# be sure to save with UNIX line-endings
+# 
+r_map_filename()
+{
+   RVAL="$1"
+   case "${RVAL}" in 
+      lib*M[DT]\.lib)
+         RVAL="${RVAL%M?.lib}.lib"
+         RVAL="${RVAL#lib}"
+      ;;
+   esac
+}

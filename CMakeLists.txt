@@ -1,7 +1,6 @@
-cmake_minimum_required( VERSION 3.1)
+cmake_minimum_required( VERSION 3.15)
 
 project( MulleObjCExpatFoundation C)
-add_definitions( -DMULLE_OBJC_EXPAT_FOUNDATION_EXTERN_GLOBAL=extern)
 
 
 
@@ -13,6 +12,9 @@ list( INSERT CMAKE_MODULE_PATH 0 "${PROJECT_SOURCE_DIR}/cmake/reflect")
 list( INSERT CMAKE_MODULE_PATH 0 "${PROJECT_SOURCE_DIR}/cmake")
 
 include( Environment)
+
+message( STATUS "CMAKE_STATIC_LIBRARY_PREFIX=${CMAKE_STATIC_LIBRARY_PREFIX}")
+message( STATUS "CMAKE_STATIC_LIBRARY_SUFFIX=${CMAKE_STATIC_LIBRARY_SUFFIX}")
 
 include( Files)
 

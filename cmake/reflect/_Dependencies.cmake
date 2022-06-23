@@ -12,12 +12,12 @@ if( MULLE_TRACE_INCLUDE)
 endif()
 
 #
-# Generated from sourcetree: a2dcf4d0-48f2-4e74-8aef-13e42ef36b92;expat;no-all-load,no-import;
+# Generated from sourcetree: a2dcf4d0-48f2-4e74-8aef-13e42ef36b92;expat;no-all-load,no-import,no-inplace;
 # Disable with : `mulle-sourcetree mark expat no-link`
 # Disable for this platform: `mulle-sourcetree mark expat no-cmake-platform-${MULLE_UNAME}`
 #
 if( NOT EXPAT_LIBRARY)
-   find_library( EXPAT_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}expat${CMAKE_STATIC_LIBRARY_SUFFIX} expat NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
+   find_library( EXPAT_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}expat${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX} ${CMAKE_STATIC_LIBRARY_PREFIX}expat${CMAKE_STATIC_LIBRARY_SUFFIX} expat NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
    message( STATUS "EXPAT_LIBRARY is ${EXPAT_LIBRARY}")
    #
    # The order looks ascending, but due to the way this file is read
@@ -88,7 +88,7 @@ endif()
 # Disable for this platform: `mulle-sourcetree mark MulleObjCPlistFoundation no-cmake-platform-${MULLE_UNAME}`
 #
 if( NOT MULLE_OBJC_PLIST_FOUNDATION_LIBRARY)
-   find_library( MULLE_OBJC_PLIST_FOUNDATION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCPlistFoundation${CMAKE_STATIC_LIBRARY_SUFFIX} MulleObjCPlistFoundation NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
+   find_library( MULLE_OBJC_PLIST_FOUNDATION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCPlistFoundation${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX} ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCPlistFoundation${CMAKE_STATIC_LIBRARY_SUFFIX} MulleObjCPlistFoundation NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
    message( STATUS "MULLE_OBJC_PLIST_FOUNDATION_LIBRARY is ${MULLE_OBJC_PLIST_FOUNDATION_LIBRARY}")
    #
    # The order looks ascending, but due to the way this file is read
@@ -168,7 +168,7 @@ endif()
 # Disable for this platform: `mulle-sourcetree mark MulleBase64 no-cmake-platform-${MULLE_UNAME}`
 #
 if( NOT MULLE_BASE64_LIBRARY)
-   find_library( MULLE_BASE64_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleBase64${CMAKE_STATIC_LIBRARY_SUFFIX} MulleBase64 NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
+   find_library( MULLE_BASE64_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleBase64${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX} ${CMAKE_STATIC_LIBRARY_PREFIX}MulleBase64${CMAKE_STATIC_LIBRARY_SUFFIX} MulleBase64 NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
    message( STATUS "MULLE_BASE64_LIBRARY is ${MULLE_BASE64_LIBRARY}")
    #
    # The order looks ascending, but due to the way this file is read
