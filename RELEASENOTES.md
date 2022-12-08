@@ -1,3 +1,7 @@
+### 0.20.3
+
+* Various small improvements
+
 ### 0.20.2
 
 * re-enable built of expat as static library

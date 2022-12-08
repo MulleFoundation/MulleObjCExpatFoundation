@@ -77,7 +77,7 @@ static void   pushKeyObj( MulleObjCExpatParser *self,
 #endif
 }
 
-
+#if 0 // UNUSED
 static NSString  *peekKey( MulleObjCExpatParser *self)
 {
    struct mulle_pointerpair   pair;
@@ -85,7 +85,7 @@ static NSString  *peekKey( MulleObjCExpatParser *self)
    pair = mulle_pointerpairarray_get_last( &self->_stack);
    return( pair.value);
 }
-
+#endif
 
 static void   *popKeyObj( MulleObjCExpatParser *self, id *value)
 {
@@ -413,13 +413,11 @@ static void   paint_arrow( char *buf, int column)
 static NSString *
    xml_error_description( XML_Parser parser, char *xml_s, size_t xml_len)
 {
-   char                  *c_string;
    char                  *s;
    char                  c_buf[ 6];
    enum XML_Error        code;
    int                   maxlength;
    NSString              *description;
-   size_t                c_len;
    struct mulle_buffer   buffer;
    XML_Index             index;
    XML_LChar             *error;

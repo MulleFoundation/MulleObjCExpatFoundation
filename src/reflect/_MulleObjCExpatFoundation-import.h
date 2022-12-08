@@ -13,25 +13,25 @@
 
 // You can tweak the following #import with these commands.
 // (Use 404EA57B-418F-4A2E-AF22-16970AFBBD03 instead of MulleObjCPlistFoundation if there are duplicate entries)
-//    remove:             `mulle-sde dependency mark MulleObjCPlistFoundation no-header`
-//    rename:             `mulle-sde dependency|library set MulleObjCPlistFoundation include whatever.h`
-//    reorder:            `mulle-sde dependency move MulleObjCPlistFoundation <up|down>`
+//    remove #import: : `mulle-sde dependency mark MulleObjCPlistFoundation no-header`
+//    rename:              `mulle-sde dependency|library set MulleObjCPlistFoundation include whatever.h`
+//    reorder:             `mulle-sde dependency move MulleObjCPlistFoundation <up|down>`
 //    toggle #import:     `mulle-sde dependency mark MulleObjCPlistFoundation [no-]import`
-//    toggle public:      `mulle-sde dependency mark MulleObjCPlistFoundation [no-]public`
-//    toggle optional:    `mulle-sde dependency mark MulleObjCPlistFoundation [no-]require`
-//    remove for platform:`mulle-sde dependency mark MulleObjCPlistFoundation no-platform-<uname>`
+//    toggle public:       `mulle-sde dependency mark MulleObjCPlistFoundation [no-]public`
+//    toggle optional:     `mulle-sde dependency mark MulleObjCPlistFoundation [no-]require`
+//    remove for platform: `mulle-sde dependency mark MulleObjCPlistFoundation no-platform-<uname>`
 //        (use `mulle-sourcetree-to-c --unames` to list known values)
 #import <MulleObjCPlistFoundation/MulleObjCPlistFoundation.h>   // MulleObjCPlistFoundation
 
 // You can tweak the following #import with these commands.
 // (Use 06CB6048-6DD4-42CF-ADA6-0A73CABDDD39 instead of MulleBase64 if there are duplicate entries)
-//    remove:             `mulle-sde dependency mark MulleBase64 no-header`
-//    rename:             `mulle-sde dependency|library set MulleBase64 include whatever.h`
-//    reorder:            `mulle-sde dependency move MulleBase64 <up|down>`
+//    remove #import: : `mulle-sde dependency mark MulleBase64 no-header`
+//    rename:              `mulle-sde dependency|library set MulleBase64 include whatever.h`
+//    reorder:             `mulle-sde dependency move MulleBase64 <up|down>`
 //    toggle #import:     `mulle-sde dependency mark MulleBase64 [no-]import`
-//    toggle public:      `mulle-sde dependency mark MulleBase64 [no-]public`
-//    toggle optional:    `mulle-sde dependency mark MulleBase64 [no-]require`
-//    remove for platform:`mulle-sde dependency mark MulleBase64 no-platform-<uname>`
+//    toggle public:       `mulle-sde dependency mark MulleBase64 [no-]public`
+//    toggle optional:     `mulle-sde dependency mark MulleBase64 [no-]require`
+//    remove for platform: `mulle-sde dependency mark MulleBase64 no-platform-<uname>`
 //        (use `mulle-sourcetree-to-c --unames` to list known values)
 #import <MulleBase64/MulleBase64.h>   // MulleBase64
 

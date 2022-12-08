@@ -199,11 +199,9 @@ mulle_utf8_t   *MulleXMLEscapeUTF8Character( mulle_utf8_t c, mulle_utf8_t buf[ 6
 //
 - (void) mullePrintXMLToStream:(id <MulleObjCOutputStream>) handle
 {
-   mulle_utf8_t             *s, *start;
+   mulle_utf8_t             *s;
    mulle_utf8_t             *q, *sentinel;
    size_t                   len;
-   size_t                   size;
-   NSMutableData            *target;
    struct mulle_utf8data    data;
    mulle_utf8_t             tmp1[ 16];
    mulle_utf8_t             tmp2[ 16 * 6];
