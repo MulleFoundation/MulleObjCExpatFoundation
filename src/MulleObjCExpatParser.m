@@ -257,6 +257,7 @@ static void    end_elem_handler( void *_self, const XML_Char *name)
    [self->_textStorage setString:nil];
 
    match = popKeyObj( self, &child);
+   obj   = nil;
 
    do
    {
