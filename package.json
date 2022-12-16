@@ -1,6 +1,6 @@
 {
    "name" : "MulleObjCExpatFoundation",
-   "version" : "0.18.0",
+   "version" : "0.20.3",
    "description" : "👴🏼 XML parser based on MulleObjCStandardFoundation and libexpat",
    "homepage" : "https://github.com/MulleFoundation/MulleObjCExpatFoundation",
    "bugs" : "https://github.com/MulleFoundation/MulleObjCExpatFoundation/issues",
@@ -11,7 +11,34 @@
       "url" : "MulleFoundation/MulleObjCExpatFoundation"
    },
    "dependencies" : {
-      "expat" : "mulle-nat/libexpat",
-      "MulleObjCStandardFoundation" : "MulleFoundation/MulleObjCStandardFoundation"
+      "libexpat" : "git://github.com/mulle-nat/libexpat",
+      "MulleObjCPlistFoundation" : "git://github.com/MulleFoundation/MulleObjCPlistFoundation",
+      "MulleObjCStandardFoundation" : "git://github.com/MulleFoundation/MulleObjCStandardFoundation",
+      "MulleObjCTimeFoundation" : "git://github.com/MulleFoundation/MulleObjCTimeFoundation",
+      "MulleObjC" : "git://github.com/mulle-objc/MulleObjC",
+      "mulle-container" : "git://github.com/mulle-c/mulle-container",
+      "mulle-allocator" : "git://github.com/mulle-c/mulle-allocator",
+      "mulle-c11" : "git://github.com/mulle-c/mulle-c11",
+      "mulle-data" : "git://github.com/mulle-c/mulle-data",
+      "farmhash-c" : "git://github.com/mulle-c/farmhash-c",
+      "mulle-fprintf" : "git://github.com/mulle-core/mulle-fprintf",
+      "mulle-sprintf" : "git://github.com/mulle-core/mulle-sprintf",
+      "mulle-buffer" : "git://github.com/mulle-c/mulle-buffer",
+      "mulle-utf" : "git://github.com/mulle-c/mulle-utf",
+      "mulle-vararg" : "git://github.com/mulle-c/mulle-vararg",
+      "mulle-thread" : "git://github.com/mulle-concurrent/mulle-thread",
+      "mintomic" : "git://github.com/mulle-concurrent/mintomic",
+      "mulle-multififo" : "git://github.com/mulle-concurrent/mulle-multififo",
+      "mulle-objc-runtime" : "git://github.com/mulle-objc/mulle-objc-runtime",
+      "mulle-concurrent" : "git://github.com/mulle-concurrent/mulle-concurrent",
+      "mulle-aba" : "git://github.com/mulle-concurrent/mulle-aba",
+      "mulle-objc-debug" : "git://github.com/mulle-objc/mulle-objc-debug",
+      "mulle-objc-cc" : "git://github.com/mulle-cc/mulle-objc-cc",
+      "mulle-time" : "git://github.com/mulle-core/mulle-time",
+      "MulleObjCValueFoundation" : "git://github.com/MulleFoundation/MulleObjCValueFoundation",
+      "MulleObjCContainerFoundation" : "git://github.com/MulleFoundation/MulleObjCContainerFoundation",
+      "mulle-unicode" : "git://github.com/mulle-c/mulle-unicode",
+      "MulleBase64" : "git://github.com/MulleWeb/MulleBase64",
+      "mulle-objc-list" : "git://github.com/mulle-objc/mulle-objc-list"
    }
 }
