@@ -8,10 +8,10 @@
    "license" : "UNLICENSED",
    "repository" : {
       "type" : "git",
-      "url" : "MulleFoundation/MulleObjCExpatFoundation"
+      "url" : "github:MulleFoundation/MulleObjCExpatFoundation"
    },
    "dependencies" : {
-      "libexpat" : "git://github.com/mulle-nat/libexpat",
+      "libexpat" : "git://github.com/libexpat/libexpat",
       "MulleObjCPlistFoundation" : "git://github.com/MulleFoundation/MulleObjCPlistFoundation",
       "MulleObjCStandardFoundation" : "git://github.com/MulleFoundation/MulleObjCStandardFoundation",
       "MulleObjCTimeFoundation" : "git://github.com/MulleFoundation/MulleObjCTimeFoundation",
