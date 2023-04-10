@@ -59,3 +59,7 @@ compile-libexpat.txt
 version.old
 cmake-build-*/
 .ackrc
+wilted/
+mulle-template-composer-*
+mulle-markdown-preview-*.html
+build-*

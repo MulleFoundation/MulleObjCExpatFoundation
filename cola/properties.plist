@@ -1,0 +1,46 @@
+{
+   project =
+   {
+      description="👴🏼 XML parser based on MulleObjCStandardFoundation and libexpat";
+      domain="github";
+      name="MulleObjCExpatFoundation";
+      user="MulleFoundation";
+      repo="MulleObjCExpatFoundation";
+      homepage="https://github.com/MulleFoundation/MulleObjCExpatFoundation";
+      license="BSD-3-Clause"
+   };
+   dependencies =
+   (
+      {
+         domain="github";
+         name="expat";
+         repo="libexpat";
+         url="https://github.com/libexpat/libexpat";
+         user="libexpat";
+      },
+      {
+         description="🛸 MulleFoundationBase does something";
+         domain="github";
+         name="MulleFoundationBase";
+         repo="MulleFoundationBase";
+         url="https://github.com/MulleFoundation/MulleFoundationBase";
+         user="MulleFoundation";
+      },
+      {
+         description="💬 Decode and encode NSData with base64";
+         domain="github";
+         name="MulleBase64";
+         repo="MulleBase64";
+         url="https://github.com/MulleWeb/MulleBase64";
+         user="MulleWeb";
+      },
+      {
+         description="📒 Lists mulle-objc runtime information contained in executables.";
+         domain="github";
+         name="mulle-objc-list";
+         repo="mulle-objc-list";
+         url="https://github.com/mulle-objc/mulle-objc-list";
+         user="mulle-objc";
+      }
+   )
+}

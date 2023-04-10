@@ -1,0 +1,2 @@
+This adds XML capability for property lists via categories to **NSPropertyListSerialization**.
+It uses the expat library.

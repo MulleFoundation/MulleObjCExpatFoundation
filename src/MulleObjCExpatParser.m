@@ -526,6 +526,7 @@ static NSString *
          NSCParameterAssert( mulle_pointerpairarray_get_count( &self->_stack) == 1);
          key = popKeyObj( self, &plist);
          NSParameterAssert( key == _PlistKey);
+         MULLE_C_UNUSED( key);
       }
       else
       {

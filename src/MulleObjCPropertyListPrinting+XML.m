@@ -40,7 +40,7 @@
 // private classes of MulleObjCValueFoundation
 #import <MulleObjCValueFoundation/_MulleObjCConcreteNumber.h>
 #import <MulleObjCValueFoundation/_MulleObjCTaggedPointerIntegerNumber.h>
-#import <MulleObjCValueFoundation/private/NSNumber-Private.h>
+#import <MulleObjCValueFoundation/NSNumber-Private.h>
 
 
 @implementation NSObject( MulleObjCPropertyListPrinting_XML)
