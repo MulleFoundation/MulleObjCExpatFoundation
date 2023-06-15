@@ -158,9 +158,9 @@
 @implementation NSString( MulleObjCPropertyListPrinting_XML)
 
 
-mulle_utf8_t   *MulleXMLEscapeUTF8Character( mulle_utf8_t c, mulle_utf8_t buf[ 6])
+char   *MulleXMLEscapeUTF8Character( char c, char buf[ 6])
 {
-   mulle_utf8_t   *s;
+   char   *s;
 
    s = buf;
    switch( c)
@@ -179,7 +179,7 @@ mulle_utf8_t   *MulleXMLEscapeUTF8Character( mulle_utf8_t c, mulle_utf8_t buf[ 6
    case 0    : *s++ = '&'; *s++ = '&'; *s++ = '#'; *s++ = '0'; *s++ = ';'; break;
 #endif
    default   :
-               if( c < 0x20)
+               if( (unsigned char) c < 0x20)
                {
                   *s++ = '&';
                   *s++ = '#';
@@ -199,16 +199,16 @@ mulle_utf8_t   *MulleXMLEscapeUTF8Character( mulle_utf8_t c, mulle_utf8_t buf[ 6
 //
 - (void) mullePrintXMLToStream:(id <MulleObjCOutputStream>) handle
 {
-   mulle_utf8_t             *s;
-   mulle_utf8_t             *q, *sentinel;
+   char                     *s;
+   char                     *q, *sentinel;
    size_t                   len;
    struct mulle_utf8data    data;
-   mulle_utf8_t             tmp1[ 16];
-   mulle_utf8_t             tmp2[ 16 * 6];
+   char                     tmp1[ 16];
+   char                     tmp2[ 16 * 6];
    IMP                      imp;
 
    // tmp1 maybe used, maybe not used. data contains always everything
-   data = MulleStringGetUTF8Data( self, mulle_utf8data_make( tmp1,
+   data = MulleStringUTF8Data( self, mulle_utf8data_make( tmp1,
                                                              sizeof( tmp1)));
 
    // do proper quoting and escaping
