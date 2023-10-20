@@ -63,3 +63,6 @@ wilted/
 mulle-template-composer-*
 mulle-markdown-preview-*.html
 build-*
+.idea
+xml.plist.output
+research

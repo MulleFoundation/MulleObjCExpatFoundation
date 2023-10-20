@@ -9,6 +9,13 @@
  *
  *      mulle-sde environment set MULLE_MATCH_TO_C_RUN DISABLE
  */
+#ifndef mulle_objc_expat_foundation_export_h__
+#define mulle_objc_expat_foundation_export_h__
+
+
 #import "MulleObjCExpatParser.h"
 #import "MulleObjCLoader+MulleObjCExpatFoundation.h"
 #import "MulleObjCPropertyListPrinting+XML.h"
+
+
+#endif

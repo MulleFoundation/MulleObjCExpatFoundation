@@ -57,6 +57,8 @@ Install the requirements:
 | [MulleBase64](https://github.com/MulleWeb/MulleBase64)             | 💬 Decode and encode NSData with base64
 | [mulle-objc-list](https://github.com/mulle-objc/mulle-objc-list)             | 📒 Lists mulle-objc runtime information contained in executables.
 
+Download the latest [tar](https://github.com/MulleFoundation/MulleObjCExpatFoundation/archive/refs/tags/latest.tar.gz) or [zip](https://github.com/MulleFoundation/MulleObjCExpatFoundation/archive/refs/tags/latest.zip) archive and unpack it.
+
 Install **MulleObjCExpatFoundation** into `/usr/local` with [cmake](https://cmake.org):
 
 ``` sh
