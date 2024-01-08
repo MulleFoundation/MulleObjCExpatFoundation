@@ -58,5 +58,6 @@ src/MulleObjCExpatFoundation.h
 src/MulleObjCExpatParser.h
 src/MulleObjCLoader+MulleObjCExpatFoundation.h
 src/MulleObjCPropertyListPrinting+XML.h
+src/reflect/_MulleObjCExpatFoundation-versioncheck.h
 )
 

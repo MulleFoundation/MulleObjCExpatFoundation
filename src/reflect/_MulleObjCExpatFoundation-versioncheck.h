@@ -7,10 +7,10 @@
 
 #if defined( MULLE_BASE64_VERSION)
 # ifndef MULLE_BASE64_VERSION_MIN
-#  define MULLE_BASE64_VERSION_MIN  ((0 << 20) | (0 << 8) | 6)
+#  define MULLE_BASE64_VERSION_MIN  ((0UL << 20) | (0 << 8) | 6)
 # endif
 # ifndef MULLE_BASE64_VERSION_MAX
-#  define MULLE_BASE64_VERSION_MAX  ((0 << 20) | (1 << 8) | 0)
+#  define MULLE_BASE64_VERSION_MAX  ((0UL << 20) | (1 << 8) | 0)
 # endif
 # if MULLE_BASE64_VERSION < MULLE_BASE64_VERSION_MIN
 #  error "MulleBase64 is too old"
@@ -22,10 +22,10 @@
 
 #if defined( MULLE_FOUNDATION_BASE_VERSION)
 # ifndef MULLE_FOUNDATION_BASE_VERSION_MIN
-#  define MULLE_FOUNDATION_BASE_VERSION_MIN  ((0 << 20) | (22 << 8) | 0)
+#  define MULLE_FOUNDATION_BASE_VERSION_MIN  ((0UL << 20) | (22 << 8) | 0)
 # endif
 # ifndef MULLE_FOUNDATION_BASE_VERSION_MAX
-#  define MULLE_FOUNDATION_BASE_VERSION_MAX  ((0 << 20) | (23 << 8) | 0)
+#  define MULLE_FOUNDATION_BASE_VERSION_MAX  ((0UL << 20) | (23 << 8) | 0)
 # endif
 # if MULLE_FOUNDATION_BASE_VERSION < MULLE_FOUNDATION_BASE_VERSION_MIN
 #  error "MulleFoundationBase is too old"

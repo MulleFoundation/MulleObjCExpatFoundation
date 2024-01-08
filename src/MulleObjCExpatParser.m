@@ -124,8 +124,11 @@ static NSString  *_StringKey     = @"string";
 static NSString  *_TrueKey       = @"true";
 
 
-static NSString  *_keyForUTF8String( char *s)
+static NSString  *_keyForUTF8String( char *string)
 {
+   char   *s;
+
+   s = string;
    switch( *s++)
    {
    case 'a' :
@@ -178,7 +181,7 @@ static NSString  *_keyForUTF8String( char *s)
       break;
    }
 
-   MulleObjCThrowInvalidArgumentException( @"unknown key");
+   MulleObjCThrowInvalidArgumentException( @"unknown XML key \"%s\", input is probably not a property list", string);
 }
 
 

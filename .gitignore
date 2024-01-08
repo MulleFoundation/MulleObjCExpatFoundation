@@ -66,3 +66,7 @@ build-*
 .idea
 xml.plist.output
 research
+coverage*.html
+*.gcda
+*.gcno
+cola/wilted/
