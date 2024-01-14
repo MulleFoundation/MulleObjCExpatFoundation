@@ -19,10 +19,10 @@ It uses the expat library.
 
 |   Requirement         | Release Version  | Description
 |-----------------------|------------------|---------------
-| [expat](https://github.com/libexpat/libexpat) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag//.svg) [![Build Status](https://github.com///workflows/CI/badge.svg?branch=release)](https://github.com///actions/workflows/mulle-sde-ci.yml) | 
-| [MulleFoundationBase](https://github.com/MulleFoundation/MulleFoundationBase) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag//.svg) [![Build Status](https://github.com///workflows/CI/badge.svg?branch=release)](https://github.com///actions/workflows/mulle-sde-ci.yml) | 🧱 MulleFoundationBase amalgamates Foundations projects
-| [MulleBase64](https://github.com/MulleWeb/MulleBase64) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag//.svg) [![Build Status](https://github.com///workflows/CI/badge.svg?branch=release)](https://github.com///actions/workflows/mulle-sde-ci.yml) | 💬 Decode and encode NSData with base64
-| [mulle-objc-list](https://github.com/mulle-objc/mulle-objc-list) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag//.svg) [![Build Status](https://github.com///workflows/CI/badge.svg?branch=release)](https://github.com///actions/workflows/mulle-sde-ci.yml) | 📒 Lists mulle-objc runtime information contained in executables.
+| [expat](https://github.com/libexpat/libexpat) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/libexpat/libexpat.svg) [![Build Status](https://github.com/libexpat/libexpat/workflows/CI/badge.svg?branch=release)](https://github.com/libexpat/libexpat/actions/workflows/mulle-sde-ci.yml) | 
+| [MulleFoundationBase](https://github.com/MulleFoundation/MulleFoundationBase) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/MulleFoundationBase.svg) [![Build Status](https://github.com/MulleFoundation/MulleFoundationBase/workflows/CI/badge.svg?branch=release)](https://github.com/MulleFoundation/MulleFoundationBase/actions/workflows/mulle-sde-ci.yml) | 🧱 MulleFoundationBase amalgamates Foundations projects
+| [MulleBase64](https://github.com/MulleWeb/MulleBase64) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleWeb/MulleBase64.svg) [![Build Status](https://github.com/MulleWeb/MulleBase64/workflows/CI/badge.svg?branch=release)](https://github.com/MulleWeb/MulleBase64/actions/workflows/mulle-sde-ci.yml) | 💬 Decode and encode NSData with base64
+| [mulle-objc-list](https://github.com/mulle-objc/mulle-objc-list) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-objc/mulle-objc-list.svg) [![Build Status](https://github.com/mulle-objc/mulle-objc-list/workflows/CI/badge.svg?branch=release)](https://github.com/mulle-objc/mulle-objc-list/actions/workflows/mulle-sde-ci.yml) | 📒 Lists mulle-objc runtime information contained in executables.
 
 ### You are here
 
