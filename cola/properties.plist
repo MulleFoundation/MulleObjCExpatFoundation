@@ -3,6 +3,8 @@
    {
       description="👴🏼 XML parser based on MulleObjCStandardFoundation and libexpat";
       domain="github";
+      language="c";
+      dialect="objc";
       name="MulleObjCExpatFoundation";
       user="MulleFoundation";
       repo="MulleObjCExpatFoundation";

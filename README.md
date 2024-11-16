@@ -38,8 +38,6 @@ mulle-sde add github:MulleFoundation/MulleObjCExpatFoundation
 
 ## Install
 
-### Install with mulle-sde
-
 Use [mulle-sde](//github.com/mulle-sde) to build and install MulleObjCExpatFoundation and all dependencies:
 
 ``` sh
@@ -47,7 +45,7 @@ mulle-sde install --prefix /usr/local \
    https://github.com/MulleFoundation/MulleObjCExpatFoundation/archive/latest.tar.gz
 ```
 
-### Manual Installation
+### Legacy Installation
 
 Install the requirements:
 

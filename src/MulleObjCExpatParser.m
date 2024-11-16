@@ -452,7 +452,7 @@ static NSString *
    if( maxlength > 256)
       maxlength = 256;
 
-   mulle_buffer_init_with_capacity( &buffer, 256, &mulle_default_allocator);
+   mulle_buffer_init( &buffer, 256, &mulle_default_allocator);
    mulle_buffer_sprintf( &buffer, "XML line %ld, at '%s': %s", line, c_buf, error);
    mulle_buffer_sprintf( &buffer, "%.*s", maxlength, s);
 
@@ -556,7 +556,7 @@ static NSString *
 
 #if 0
 
-- (NSString *) mulleDebugContentsDescription
+- (NSString *) mulleDebugContentsDescription      MULLE_OBJC_THREADSAFE_METHOD
 {
    struct mulle_pointerpairarrayenumerator   pair_rover;
    NSString                                  *separator;

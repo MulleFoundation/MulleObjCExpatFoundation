@@ -20,19 +20,27 @@ int   main( int argc, const char * argv[])
    NSError   *error;
    id        plist;
    id        check;
+   NSString  *filename;
 
    if( argc == 2)
      return( 1);
 
-   error = nil;
-   data  = [NSData dataWithContentsOfFile:@"xml.plist"];
+   error    = nil;
+   filename = @"xml.plist";
+   data     = [NSData dataWithContentsOfFile:filename];
+   if( ! data)
+   {
+      mulle_fprintf( stderr, "Failed to load \"%@\"\n", filename);
+      return( 1);
+   }
+
    plist = [NSPropertyListSerialization propertyListWithData:data
                                                      options:NSPropertyListImmutable
                                                       format:NULL
                                                        error:&error];
    if( ! plist)
    {
-      fprintf( stderr, "Error (parse): %s\n", [[error description] UTF8String]);
+      mulle_fprintf( stderr, "Error (parse): %@\n", error);
       return( 1);
    }
 
@@ -42,7 +50,7 @@ int   main( int argc, const char * argv[])
                                                          error:&error];
    if( ! outData)
    {
-      fprintf( stderr, "Error (print): %s\n", [[error description] UTF8String]);
+      mulle_fprintf( stderr, "Error (print): %@\n", error);
       return( 1);
    }
    [outData writeToFile:@"xml.plist.output"
@@ -54,7 +62,7 @@ int   main( int argc, const char * argv[])
                                                        error:&error];
    if( ! check)
    {
-      fprintf( stderr, "Error (check): %s\n", [[error description] UTF8String]);
+      mulle_fprintf( stderr, "Error (check): %@\n", error);
       return( 1);
    }
 
@@ -62,7 +70,7 @@ int   main( int argc, const char * argv[])
    // keys and it's not necessarily sorted
    if( ! [check isEqual:plist])
    {
-      fprintf( stderr, "property lists differ\n");
+      mulle_fprintf( stderr, "property lists differ\n");
       return( 1);
    }
    return( 0);
