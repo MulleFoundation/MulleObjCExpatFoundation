@@ -8,7 +8,7 @@ It uses the expat library.
 
 | Release Version                                       | Release Notes
 |-------------------------------------------------------|--------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/MulleObjCExpatFoundation.svg?branch=release) [![Build Status](https://github.com/MulleFoundation/MulleObjCExpatFoundation/workflows/CI/badge.svg?branch=release)](//github.com/MulleFoundation/MulleObjCExpatFoundation/actions) | [RELEASENOTES](RELEASENOTES.md) |
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/MulleObjCExpatFoundation.svg) [![Build Status](https://github.com/MulleFoundation/MulleObjCExpatFoundation/workflows/CI/badge.svg)](//github.com/MulleFoundation/MulleObjCExpatFoundation/actions) | [RELEASENOTES](RELEASENOTES.md) |
 
 
 
