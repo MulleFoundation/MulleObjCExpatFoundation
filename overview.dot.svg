@@ -162,7 +162,7 @@
 <!-- MulleObjCRegexFoundation -->
 <g id="node12" class="node">
 <title>MulleObjCRegexFoundation</title>
-<g id="a_node12"><a xlink:href="https://github.com/MulleFoundation/MulleObjCRegexFoundation" xlink:title="MulleObjCRegexFoundation">
+<g id="a_node12"><a xlink:href="https://github.com/MulleFoundation/MulleObjCRegexFoundation@*" xlink:title="MulleObjCRegexFoundation">
 <polygon fill="lightgrey" stroke="black" points="1664.5,-180 1447.5,-180 1447.5,-144 1664.5,-144 1664.5,-180"/>
 <text text-anchor="middle" x="1556" y="-158.3" font-family="Times,serif" font-size="14.00">MulleObjCRegexFoundation</text>
 </a>
