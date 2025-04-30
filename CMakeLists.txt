@@ -1,4 +1,4 @@
-cmake_minimum_required( VERSION 3.15)
+cmake_minimum_required( VERSION 3.13...99.99)
 
 project( MulleObjCExpatFoundation VERSION 0.20.7 LANGUAGES C)
 
