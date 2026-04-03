@@ -22,7 +22,7 @@
 //    remove #include: `mulle-sde dependency mark expat no-header`
 //    rename              : `mulle-sde dependency|library set expat include whatever.h`
 //    reorder             : `mulle-sde dependency move expat <up|down>`
-//    toggle #include: `mulle-sde dependency mark expat [no-]import`
+//    toggle objc         : `mulle-sde dependency mark expat [no-]import`
 //    toggle public       : `mulle-sde dependency mark expat [no-]public`
 //    toggle optional     : `mulle-sde dependency mark expat [no-]require`
 //    remove for platform : `mulle-sde dependency mark expat no-platform-<uname>`

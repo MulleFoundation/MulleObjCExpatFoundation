@@ -53,6 +53,7 @@
    MulleObjCPrintPlistContextInit( &ctxt, handle);
    ctxt.dateFormatter  = [[[NSDateFormatter alloc] initWithDateFormat:MulleDateFormatISO
                                                  allowNaturalLanguage:NO] autorelease];
+   [ctxt.dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
    ctxt.sortsDictionary = NO;
 
    MulleObjCPrintPlistContextWriteUTF8String( &ctxt,

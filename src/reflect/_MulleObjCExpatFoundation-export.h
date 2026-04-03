@@ -13,8 +13,8 @@
 #define _mulle_objc_expat_foundation__export_h__
 
 
+#import "MulleObjCDeps+MulleObjCExpatFoundation.h"
 #import "MulleObjCExpatParser.h"
-#import "MulleObjCLoader+MulleObjCExpatFoundation.h"
 #import "MulleObjCPropertyListPrinting+XML.h"
 
 

@@ -73,7 +73,7 @@ static void   pushKeyObj( MulleObjCExpatParser *self,
    pair.value = value;
    _mulle_pointerpairarray_add( &self->_stack, pair);
 #if STACK_DEBUG
-   fprintf( stderr, "+key : %s %s\n", [key UTF8String], [[value description] UTF8String]);
+   mulle_fprintf( stderr, "+key : %s %s\n", [key UTF8String], [[value description] UTF8String]);
 #endif
 }
 
@@ -96,7 +96,7 @@ static void   *popKeyObj( MulleObjCExpatParser *self, id *value)
       *value = pair.value;
 
 #if STACK_DEBUG
-   fprintf( stderr, "-key : %s %s\n", [(id) pair.key UTF8String], [[(id) pair.value description] UTF8String]);
+   mulle_fprintf( stderr, "-key : %s %s\n", [(id) pair.key UTF8String], [[(id) pair.value description] UTF8String]);
 #endif
    return( pair.key == mulle_not_a_pointer ? NULL : pair.key);
 }
@@ -194,7 +194,7 @@ static void   start_elem_handler( void *_self, XML_Char *name, XML_Char **attrib
    NSString                                  *key;
 
 #if XML_DEBUG
-   fprintf( stderr, "<%s>\n", name);
+   mulle_fprintf( stderr, "<%s>\n", name);
 #endif
    self = (MulleObjCExpatParser *) _self;
 
@@ -221,7 +221,7 @@ static void    char_data_handler( void *_self, XML_Char *s, int len)
    }
 
 #if XML_DEBUG
-   fprintf( stderr, "%.*s\n", len, s);
+   mulle_fprintf( stderr, "%.*s\n", len, s);
 #endif
    text = [[NSString alloc] mulleInitWithUTF8Characters:(void *) s
                                                  length:len];
@@ -252,7 +252,7 @@ static void    end_elem_handler( void *_self, const XML_Char *name)
    NSData                 *data;
 
 #if XML_DEBUG
-   fprintf( stderr, "</%s>\n", name);
+   mulle_fprintf( stderr, "</%s>\n", name);
 #endif
    self = (MulleObjCExpatParser *) _self;
    key  = _keyForUTF8String( (char *) name);

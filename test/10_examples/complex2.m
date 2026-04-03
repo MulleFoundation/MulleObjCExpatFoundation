@@ -70,11 +70,11 @@ int   main( int argc, const char * argv[])
                                                        error:&error];
    if( ! plist)
    {
-      fprintf( stderr, "Error: %s\n", [[error description] UTF8String]);
+      mulle_fprintf( stderr, "Error: %s\n", [[error description] UTF8String]);
       return( 1);
    }
 
    // not so pretty yet
-   fprintf( stderr, "Plist: %s\n", [[plist description] UTF8String]);
+   mulle_fprintf( stderr, "Plist: %s\n", [[plist description] UTF8String]);
    return( 0);
 }

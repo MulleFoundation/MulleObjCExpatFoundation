@@ -54,9 +54,9 @@ src/generic/include.h
 # contents selected with patternfile ??-header--public-headers
 #
 set( PUBLIC_HEADERS
+src/MulleObjCDeps+MulleObjCExpatFoundation.h
 src/MulleObjCExpatFoundation.h
 src/MulleObjCExpatParser.h
-src/MulleObjCLoader+MulleObjCExpatFoundation.h
 src/MulleObjCPropertyListPrinting+XML.h
 src/reflect/_MulleObjCExpatFoundation-versioncheck.h
 )

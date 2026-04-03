@@ -66,9 +66,9 @@ int   main( int argc, const char * argv[])
                                             errorDescription:&error];
 #if 0
    if( ! plist)
-      fprintf( stderr, "Error: %s", [error UTF8String]);
+      mulle_fprintf( stderr, "Error: %s", [error UTF8String]);
    else
-      fprintf( stderr, "Error: %s", [[plist description] UTF8String]);
+      mulle_fprintf( stderr, "Error: %s", [[plist description] UTF8String]);
 #endif
 
    return( 0);

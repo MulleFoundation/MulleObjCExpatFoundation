@@ -21,7 +21,7 @@ src/NSPropertyListSerialization+Expat.m
 # contents selected with patternfile ??-source--stage2-sources
 #
 set( STAGE2_SOURCES
-src/MulleObjCLoader+MulleObjCExpatFoundation.m
+src/MulleObjCDeps+MulleObjCExpatFoundation.m
 )
 
 #

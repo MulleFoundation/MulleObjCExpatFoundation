@@ -1,22 +1,22 @@
 //
-//  MulleObjCLoader+ExpatFoundation.m
+//  MulleObjCDeps+ExpatFoundation.m
 //  MulleObjCExpatFoundation
 //
 //  Created by Nat! on 12.05.17.
 //  Copyright © 2017 Mulle kybernetiK. All rights reserved.
 //
 
-#import "MulleObjCLoader+MulleObjCExpatFoundation.h"
+#import "MulleObjCDeps+MulleObjCExpatFoundation.h"
 
 
-@implementation MulleObjCLoader( MulleObjCExpatFoundation)
+@implementation MulleObjCDeps( MulleObjCExpatFoundation)
 
 + (struct _mulle_objc_dependency *) dependencies
 {
    static struct _mulle_objc_dependency   dependencies[] =
    {
 
-#include "objc-loader.inc"
+#include "objc-deps.inc"
 
       { MULLE_OBJC_NO_CLASSID, MULLE_OBJC_NO_CATEGORYID }
    };
