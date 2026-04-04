@@ -6,6 +6,7 @@
       language="c";
       dialect="objc";
       name="MulleObjCExpatFoundation";
+      version="0.20.9";
       user="MulleFoundation";
       repo="MulleObjCExpatFoundation";
       homepage="https://github.com/MulleFoundation/MulleObjCExpatFoundation";
