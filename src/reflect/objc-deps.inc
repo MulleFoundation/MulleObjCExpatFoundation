@@ -1,3 +1,5 @@
+      { @selector( MulleObjCDeps), @selector( MulleBase64) },      // 3c20656f;MulleObjCDeps;22440994;MulleBase64
+      { @selector( MulleObjCDeps), @selector( MulleFoundationBase) },      // 3c20656f;MulleObjCDeps;efab19ea;MulleFoundationBase
       { @selector( MulleObjCExpatParser), MULLE_OBJC_NO_CATEGORYID },      // e0ad20dd;MulleObjCExpatParser;;
       { @selector( NSArray), @selector( MulleObjCPropertyListPrinting_XML) },      // 233490fe;NSArray;9ae794e9;MulleObjCPropertyListPrinting_XML
       { @selector( NSData), @selector( MulleObjCPropertyListPrinting_XML) },      // 8fce7861;NSData;9ae794e9;MulleObjCPropertyListPrinting_XML
