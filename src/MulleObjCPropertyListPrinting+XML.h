@@ -52,7 +52,7 @@
 @end
 
 
-@interface NSObject( MulleObjCPropertyListPrinting_XMLFuture)
+@interface NSObject( MulleObjCPropertyListPrinting_XMLFuture) < MulleObjCFuture>
 
 - (void) mullePrintXML:(struct MulleObjCPrintPlistContext *) ctxt;
 
