@@ -1,6 +1,6 @@
 {
    "name" : "MulleObjCExpatFoundation",
-   "version" : "0.20.9",
+   "version" : "0.20.10",
    "description" : "👴🏼 XML parser based on MulleObjCStandardFoundation and libexpat",
    "keywords" : [],
    "license" : "BSD-3-Clause",
