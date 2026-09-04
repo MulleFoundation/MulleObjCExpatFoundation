@@ -1,5 +1,5 @@
 //
-//  MulleObjCPropertyListPrinting+XML.m
+//  MulleObjCPropertyListPrinting+XML.h
 //  MulleObjCExpatFoundation
 //
 //  Copyright (c) 2021 Nat! - Mulle kybernetiK.
