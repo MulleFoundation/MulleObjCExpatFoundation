@@ -1,12 +1,12 @@
 {
    "name" : "MulleObjCExpatFoundation",
-   "version" : "0.20.10",
+   "version" : "0.20.11",
    "description" : "👴🏼 XML parser based on MulleObjCStandardFoundation and libexpat",
    "keywords" : [],
    "license" : "BSD-3-Clause",
    "repo" : "MulleFoundation/MulleObjCExpatFoundation",
    "src" : [
-      "asset/dox/TOC.md",
+      "asset/dox/api/toc/index.md",
       "src/generic/import-private.h",
       "src/generic/import.h",
       "src/generic/include-private.h",
